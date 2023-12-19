@@ -1,0 +1,176 @@
+.body-product{
+    margin: 0;
+    padding: 0;
+    /* min-height: 100vh; Ensure the body takes at least the full viewport height */
+    display: flex;
+    flex-direction: column;
+}
+.main-box-create-project{
+    flex:1;
+  min-height: 100vh;
+}
+
+.tags-create-project{
+    display: flex;
+    justify-content: center;
+    color:rgb(43, 60, 158);
+}  
+.container-create-project{
+    display: flex; 
+    justify-content: center;
+    align-items:center;
+  }
+
+  .forms-outline-create-project{
+   padding:40px 40px 0 40px;
+    flex-direction: column;
+  
+}
+.create-project{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding:15px;
+}
+
+.label-create-project{
+    width :250px;
+    text-align: start;
+    font-size: 18px;
+}
+.input-container-create-project { 
+    display: flex;
+    margin: 15px;
+
+}
+/* .input-details-create-project{
+    width: 550px !important;
+    height: 35px;
+    padding:5px;
+}  */
+.select-create-project{
+    width: 400px !important;
+}
+.select-service-create-project{
+    width: 250px !important;
+}
+.service-section {
+    /* width: auto !important;
+    max-width: none !important;
+    min-height: unset !important; */
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    
+}
+.service-section-create-project{
+ 
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+    gap:3%;
+    padding: 15px;
+
+}
+.input-container-service-create-project {
+    display: flex;
+    margin:25px 20px 30px 10px;
+}
+/* .input-details-vendor-detail{
+    width: 200px !important;
+    height: 35px;
+    padding:5px;
+    border: 5px solid darkblue;
+}  */
+
+.subcontainer-create-project{
+    display: flex;
+  flex-direction: column;
+
+ 
+}
+.input-group-create-project{
+    /* display: flex; */
+   width:1040px;
+  
+    margin: 20px ;
+    text-align:start;
+}
+.input-group-1-create-project{
+    display:flex;
+    flex-direction: row;
+}
+
+
+
+.input-subcontainer-create-project{
+display: flex;
+width:1040px;
+justify-content: center;
+ margin: 20px ;
+ text-align: center;
+}
+
+.label-subcontainer-create-project{
+    width: 220px;
+    text-align: left;
+
+}
+
+.input-detail-create-project{
+    width:20%;
+}
+.date-type-report-admin,
+.text-area-create-project{
+  
+    border-radius: 1%;
+    border: 1px solid lightgrey ;
+    padding: 8px;
+    align-items: center;
+      border: 1px solid transparent; /* Start with a transparent border */
+      transition: border-color 0.3s ease; /* Transition the border color change */
+  
+      border-radius: 1%;
+  }
+
+ 
+.date-type-report-admin:hover,
+.text-area-create-project:hover{
+    border: #0cbbbc; /* Apply a light gray border on hover */
+    box-shadow: 0 0 12px rgb(67, 190, 206); /* Apply a light shadow on hover */
+   /* border-color: #0cbbbc; */
+}
+
+.radio-input{
+    display: flex;
+    flex-direction: column;
+}
+.btn-submit-create-project{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top: 5px;
+    margin-top: 15px;
+}
+
+
+  .text-area-create-project{
+    padding: 8px;
+    align-items: center;
+    border: 1px solid lightgray;
+    border: 1px solid transparent; /* Start with a transparent border */
+        transition: border-color 0.3s ease;
+  
+  }
+      
+  .text-area-create-project:hover {
+    border: #0cbbbc; /* Apply a light gray border on hover */
+    box-shadow: 0 0 12px rgb(67, 190, 206); /* Apply a light shadow on hover */
+  
+  }
+
+  .input-details-create-project{
+    width:55%;
+}

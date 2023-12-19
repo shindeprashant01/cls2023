@@ -1,0 +1,72 @@
+.main-box-vendor-regi{
+  height: 1300px;
+}
+.container-vendor-regi{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.forms-outline-vendor-regi{
+  padding: 35px 100px 150px 150px;
+
+   /* border: 1px solid grey; */
+  flex-direction: column;
+  /* justify-content: center; */  
+  /* width: 70%; */
+  /* padding: 10px; */
+  font-size: 16px;
+  
+}
+.input-container-vendor-regi {
+   display: flex;
+   width:1040px;
+  justify-content: flex-start;
+    margin: 20px ;
+    text-align: center;
+    }
+
+  .input-box{
+    width:600px;
+  }
+  .input-box-unique{
+    margin-right: 10px;
+  }
+  .input-box-unique-1{
+    width:50%;
+  }
+ 
+  /* .select-prequest{
+    width: 450px;
+    height: 35px;
+    padding:0 5px;
+  
+  } */
+  .text-area-vendor-regi{
+    padding: 8px;
+    align-items: center;
+  }
+ 
+  .label-vendor-regi{
+    width: 260px;
+    text-align: left;
+  }
+  .file-type{
+    width: auto !important;
+  display: flex;
+  align-items: center;
+  justify-content: space-between
+  }
+  .input-details-vendor-regi{
+width:100%;
+  }
+  .input-details{
+    width: 100%;
+  }
+  .btn-submit-vendor-regi{
+    display: flex;
+    /* align-items: center; */
+      justify-content: center;
+      border-radius: 80%;
+    margin: 50px 150px 25px 0;
+  }
+  

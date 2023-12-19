@@ -1,0 +1,36 @@
+/* styles.css */
+
+/* Styles for multiple dashboards container */
+.multiple-dashboards {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 20px;
+  }
+  
+  /* Styles for individual dashboard */
+  .dashboard {
+    width: 45%; /* Adjust width as needed */
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Styles for chart container */
+  .chart-container {
+    margin-top: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    background-color: #f9f9f9;
+  }
+  
+  /* Responsive styles for the chart canvas */
+  canvas {
+    max-width: 100%;
+    height: auto;
+  }
+  

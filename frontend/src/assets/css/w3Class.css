@@ -1,0 +1,22 @@
+.my-profile-tab{
+    margin-top:100px;
+    width: 300px;
+}
+.instructor-line{
+    margin: 40px 0px 0px 50px;
+}
+.nav-bar , .nirvaa-cls-tag{
+    background-color: #0cbbbc !important;
+}
+
+.top-portion-my-profile{
+    margin-top: 80px;
+    width: 350px;
+    /* height: h; */
+}
+.footer-mainTag{
+    background-color: #0cbbbc !important;
+}
+.footer-mainTag-1{
+    background-color: rgb(115, 191, 226) !important;
+}

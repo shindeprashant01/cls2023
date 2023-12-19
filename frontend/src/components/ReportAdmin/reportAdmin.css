@@ -1,0 +1,63 @@
+.main-box-report-admin{
+    height: 700px;
+  }
+  .container-report-admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .forms-outline-report-admin{
+    padding: 35px 0 150px 250px;
+   flex-direction: column;
+   font-size: 16px;
+   
+  }
+  .input-container-report-admin{
+    display: flex;
+     width:1040px;
+    justify-content: flex-start;
+      margin: 20px ;
+      text-align:start;
+  }
+  .date-type-create-project{
+    width: 100%;
+    border-radius: 1%;
+    border: 1px solid lightgrey ;
+    padding: 8px;
+    align-items: center;
+      border: 1px solid transparent; /* Start with a transparent border */
+      transition: border-color 0.3s ease; /* Transition the border color change */
+  
+      border-radius: 1%;
+  }
+
+ 
+.date-type-create-project:hover{
+    border: #0cbbbc; /* Apply a light gray border on hover */
+    box-shadow: 0 0 12px rgb(67, 190, 206); /* Apply a light shadow on hover */
+   /* border-color: #0cbbbc; */
+}
+ 
+  .label-report-admin {
+      width: 220px;
+      text-align: left;
+    }
+  
+   .input-details-report-admin{
+    width: 30%;
+   }
+    /* .text-area-label{
+      width:1500px;
+      align-items: center;
+    } */
+  
+    .input-details{
+      width: 50%;
+    }
+    .btn-submit-report-admin{
+      display: flex;
+      /* align-items: center; */
+        justify-content: center;
+        border-radius: 80%;
+      margin: 35px 300px 25px 0;
+    }

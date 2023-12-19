@@ -1,0 +1,67 @@
+.main-box-ex-request{
+  height: 700px;
+}
+.container-ex-request{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.forms-outline-ex-request{
+  padding: 35px 0 150px 250px;
+
+  /* border: 1px solid grey; */
+ flex-direction: column;
+ /* justify-content: center; */  
+ /* width: 70%; */
+ /* padding: 10px; */
+ font-size: 16px;
+ 
+}
+.input-container-ex-request{
+  display: flex;
+   width:1040px;
+  justify-content: flex-start;
+    margin: 20px ;
+    text-align:start;
+}
+
+/* .input-details > select{
+  width: 250px;
+} */
+.text-area-ex-request{
+  padding: 8px;
+  align-items: center;
+  border: 1px solid lightgray;
+  border: 1px solid transparent; /* Start with a transparent border */
+      transition: border-color 0.3s ease;
+
+}
+    
+.text-area-ex-request:hover {
+  border: #0cbbbc; /* Apply a light gray border on hover */
+  box-shadow: 0 0 12px rgb(67, 190, 206); /* Apply a light shadow on hover */
+
+}
+.label-ex-request {
+    width: 220px;
+    text-align: left;
+  }
+
+ .input-details-ex-request{
+  width: 55%;
+ }
+  /* .text-area-label{
+    width:1500px;
+    align-items: center;
+  } */
+
+  .input-details{
+    width: 100%;
+  }
+  .btn-submit-ex-request{
+    display: flex;
+    /* align-items: center; */
+      justify-content: center;
+      border-radius: 80%;
+    margin: 25px 300px 25px 0;
+  }
