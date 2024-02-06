@@ -15,7 +15,7 @@ const ArchivedPoTable = () => {
 
     const viewArchivedPO = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/po.php`)
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setArchivedPO(response.data);
             setFilteredArchivedPO(response.data)
         } catch (error) {

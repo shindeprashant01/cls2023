@@ -4,7 +4,7 @@ import DataTable  from 'react-data-table-component';
 import axios from "axios";
 import { Button } from "react-bootstrap";
 
-import '../../addVendor/viewVendor.css'
+// import '../../addVendor/viewVendor.css'
 
 
 
@@ -104,42 +104,42 @@ const ArchivedStockTable= () => {
            const tableHeaderStyleArchivedStock={
             headCells: {
               style: {
-                  customStyles:"customStyles",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItem: "center",
-                  borderRight: "0.5px solid lightgrey",
-                  // border: "1px solid white",
-                  width: "50px",
-                  height:"100px",
-                  fontWeight: "bold",
-                  fontSize: "14px",
-                  color: "white",
-                  backgroundColor: "rgb(67, 190, 206)",
-                  padding: "12px",
-                  // height:'100px'
-                  // minWidht "!100px !important"
-  
-              }
-          },
-          cells: {
-              style: {
-                  
-                   display: "flex",
-                  justifyContent: "center",
-                  fontSize: '14px',
-                  flexWrap: "wrap",
-                  // width: '100px',
-                   borderRight: "1px solid lightgrey",
-                   borderBottom:'1px solid lightgrey'
-                   // height:'100px'
-              }
-          },
-          rows: {
-              style: {
-                  height:"60vh",
+                customStyles:"customStyles",
+                display: "flex",
+                justifyContent: "center",
+                alignItem: "center",
+                borderRight: "0.5px solid lightgrey",
+                // border: "1px solid white",
+                width: "50px",
+                height:"100px",
+                fontWeight: "bold",
+                fontSize: "14px",
+                color: "white",
+                backgroundColor: "rgb(67, 190, 206)",
+                padding: "12px",
+                // height:'100px'
+                // minWidht "!100px !important"
+
+            }
+        },
+        cells: {
+            style: {
                 
-              }
+                 display: "flex",
+                justifyContent: "center",
+                fontSize: '14px',
+                flexWrap: "wrap",
+                // width: '100px',
+                 borderRight: "1px solid lightgrey",
+                 borderBottom:'1px solid lightgrey'
+                 // height:'100px'
+            }
+        },
+        rows: {
+            style: {
+                height:"60vh",
+              
+            }
           }
           }
 
@@ -156,15 +156,14 @@ const ArchivedStockTable= () => {
       </div>
         <div style={{ width: '88rem' }}>
       <DataTable 
-      className="dataTables_wrapper"
-     customStyles={tableHeaderStyleArchivedStock}
-     columns={columnsArchivedStock}
-      data={filterArchivedStock}
-      pagination
-   
-      selectableRows
-      selectableRowsHighlight
-      highlightOnHover
+          // className="dataTables_wrapper"
+         customStyles={tableHeaderStyleArchivedStock}
+          columns={columnsArchivedStock}
+         data={filterArchivedStock}
+          pagination
+         selectableRows
+        selectableRowsHighlight
+         highlightOnHover
     //   actions={
     
     //     <Button varient="primary" className="me-5 w-20 " size="lg" >  Download</Button>

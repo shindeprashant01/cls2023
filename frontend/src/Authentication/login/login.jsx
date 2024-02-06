@@ -3,25 +3,26 @@ import { Button, Form } from 'react-bootstrap';
 import './login.css';
 import axios from 'axios';
 import newApiUrl from '../../TablePages/config';
+import { Link} from 'react-router-dom';
 
 
 
 
 const LoginForm = () => {
     const [formData, setFormData] = useState({
-        userID: '',
+        emp_id: '',
         password: '',
     });
  
-    const login= async () => {
-        try {
-            const response = await axios.get('http://192.168.10.153/json/customer.php')
-            // setViewCustomer(response.data);
-            // setFilteredViewCustomer(response.data)
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    // const login= async () => {
+    //     try {
+    //         const response = await axios.get(`${newApiUrl}/json/login.php`)
+    //         // setViewCustomer(response.data);
+    //         // setFilteredViewCustomer(response.data)
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // };
 
     const handleChange = (event) => {
         const { name, value } = event.target;
@@ -33,14 +34,14 @@ const LoginForm = () => {
     };
 
     const handleSubmit = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         // You can handle form submission logic here, e.g., sending data to a server.
-    const sendData ={
-            userID:formData.userID,
-            password: formData.password
-        }
-        console.log('Registration data:', sendData);
-        axios.get(`${newApiUrl}/login.php`,)
+    // const sendData ={
+    //         emp_id:formData.emp_id,
+    //         password: formData.password
+    //     }
+        // console.log('Registration data:', sendData);
+        axios.get(`${newApiUrl}/login.php`,formData)
     };
 
 
@@ -65,13 +66,13 @@ const LoginForm = () => {
                                     </label>
                                     <input
                                         type="text"
-                                        name='userID'
+                                        name='emp_id'
                                         className="form-control"
                                         placeholder="User ID"
                                         aria-label="Large"
                                         aria-describedby="inputGroup-sizing-sm"
                                         onChange={handleChange}
-                                        value={formData.username}
+                                        value={formData.emp_id}
                                     />
                                 </div>
                             </div>
@@ -93,8 +94,13 @@ const LoginForm = () => {
                                     />
                                 </div>
                             </div>
-                            <div className='btn-submit-login'  onSubmit={handleSubmit}>
-                            <Button variant='primary' > Log In</Button>
+                            <div className='btn-submit-login' >
+
+                            <Link to={{ 
+                    pathname: "/home",
+                    // search: `?pras/home`, 
+                     }}><Button> Log In</Button></Link>
+                            {/* <Button variant='primary' > Log In</Button> */}
                             </div>
                            
                         </div>

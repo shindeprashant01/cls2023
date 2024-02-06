@@ -9,7 +9,7 @@
 }
 .main-box-p{
     flex:1;
-   
+   max-width: 100em;
   min-height: 100vh;
 
 }
@@ -25,10 +25,10 @@
   }
 
   .forms-outline-pforms{
-    width: 100%;
+    width: 100rem;
     padding:40px 40px 0 40px;
      /* border: 1px solid grey; */
-    flex-direction: column;
+    flex-direction: column;    
     /* justify-content: center; */
     /* padding: 10px; */
     overflow: hidden;  
@@ -39,12 +39,15 @@
     /* justify-content: center; */
     align-items: center;
     flex-direction: column;
-    padding:15px;
+    padding:1rem 24rem;
 }
 
+
+
+  
 .label-pforms,
 .label-pforms-total-detail{
-    width :230px;
+    width :14.375rem;
     text-align: start;
     font-size: 18px;
 }
@@ -175,3 +178,48 @@ margin: 15px;
     height: 25px;
     width: 25px;
 }
+
+
+
+@media screen and (max-width: 600px) {
+    .purchase-form,
+    .total-detail {
+        padding:1rem ;
+    }
+    .input-container-pform,
+    .input-container-total-detail{
+        flex-direction: column;
+        margin: 2rem;
+    } 
+    .label-pforms,
+   .label-pforms-total-detail{
+   font-size: 14px;
+}
+ 
+  }
+
+
+  @media screen and (max-width: 355px){
+    .input-details-pform,
+    .input-details-total-detail{
+        width: 150px !important;
+    }
+
+  }
+
+  @media screen and (max-width: 550px){
+    .vendor-sub-details{
+        padding:1rem ;
+    }
+    .input-container-vendor-detail {
+        flex-direction: column;
+        margin: 1rem;
+    }
+
+    .input-details-vendor-detail{
+        margin: 1rem;
+    }
+    .input-details-vendor-detail-unique{
+        margin: 1rem;
+    }
+  }

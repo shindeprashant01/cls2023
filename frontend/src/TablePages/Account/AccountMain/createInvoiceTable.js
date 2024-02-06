@@ -35,7 +35,7 @@ const CreateInvoiceTable= () => {
     },
 ,
       {
-        name:<div id="demo"> Create Invocie</div>,
+        name:<div id="demo"> Create Invoice</div>,
         selector: (row) => row.body,
         sortable:true,
         wrap:true,

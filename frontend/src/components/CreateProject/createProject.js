@@ -293,7 +293,7 @@ const CreateProject = () => {
                   <div className="input-subcontainer-create-project">
                     <label className="label-subcontainer-create-project">
                       {" "}
-                      Reamrk:
+                      Remark:
                     </label>
                     <div className="input-detail-create-project">
                       <textarea

@@ -16,7 +16,7 @@ const ExpenseTable= () => {
 
   const viewExpense= async ()=>{
     try{
- const response = await axios.get(`${newApiUrl}/amc_expense.php`)
+ const response = await axios.get(`${newApiUrl}/amc_expense.php?id=get`)
      setExpense(response.data);
      setFilteredExpense(response.data)
     } catch(error){
@@ -183,7 +183,7 @@ const ExpenseTable= () => {
       }
       subHeader
       subHeaderComponent={
-        <input type="text" placeholder="Search Here" 
+        <input type="text" placeholder="Search Here By ID" 
         className="w-25 form-control"
         value={searchE}
         onChange={(e)=>setSearchE(e.target.value)}/>

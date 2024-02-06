@@ -15,7 +15,7 @@ const PurchaseTrackTable= () => {
 
   const viewPurchaseTrack = async ()=>{
     try{
- const response = await axios.get(`${newApiUrl}/purchase.php`)
+ const response = await axios.get(`${newApiUrl}/new_purchaesorder_amc.php?id=get`)
      setPurchaseTrack(response.data);
      setFilteredPurchaseTrack(response.data)
     } catch(error){
@@ -35,18 +35,18 @@ const PurchaseTrackTable= () => {
     },
     {
       name:<div id="demo">Ticket ID</div>,
-      selector: (row )=> row.tikckit_id,
+      selector: (row )=> row.t_id,
       wrap:true,
     },
    
     {
       name:<div id="demo">Requested By</div>,
-      selector: (row) => row.service_Engineer,
+      selector: (row) => row.se_name,
       wrap:true,
     },
     {
       name:<div id="demo">Service</div>,
-      selector: (row) => row.s_dept,
+      selector: (row) => row.s_name,
       wrap:true,
     },
     {
@@ -57,45 +57,46 @@ const PurchaseTrackTable= () => {
   
     {
       name:<div id="demo">project Name</div>,
-      selector: (row) => row.po_no,
+      selector: (row) => row.cc_id,
       wrap:true,
     },
     {
         name:<div id="demo">Requested Date</div>,
-        selector: (row) => row.Date,
+        selector: (row) => row.body,
         wrap:true,
       },
     {
       name:<div id="demo">Track</div>,
-      selector: (row) => row.Track,
+      selector: (row) => row.body,
       wrap:true,
     },
     {
       name:<div id="demo">Vendor Name</div>,
       selector: (row) => row.companyname,
+      wrap:true,
     },
     {
       name:<div id="demo">Total With GST</div>,
-      selector: (row) => row.email,
+      selector: (row) => row.fulltotal,
       wrap:true,
     },
     {
       name:<div id="demo">PO Number</div>,
-      selector: (row) => row.email,
+      selector: (row) => row.PO_id,
       wrap:true,
     },
     {
       name:<div id="demo">View PDF</div>,
-      selector: (row) => row.email,
+      selector: (row) => row.body,
     },
     {
         name:<div id="demo">Purchase Description</div>,
-        selector: (row) => row.purchase_description,
+        selector: (row) => row.p_desc,
         wrap:true,
       },
       {
         name:<div id="demo">Documents</div>,
-        selector: (row) => row.email,
+        selector: (row) => row.document,
         wrap:true,
       },
  
@@ -107,7 +108,7 @@ const PurchaseTrackTable= () => {
           
       useEffect(()=>{
         const result= purchaseTrack.filter(singleOrder =>{
-         return singleOrder.service_Engineer.toLowerCase().match(searchPT.toLocaleLowerCase());
+         return singleOrder.PO_id.toLowerCase().match(searchPT.toLocaleLowerCase());
         });
      
         setFilteredPurchaseTrack(result)

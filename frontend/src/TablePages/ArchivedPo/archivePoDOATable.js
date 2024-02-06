@@ -5,7 +5,7 @@ import axios from "axios";
 import newApiUrl from "../config";
 // import '../addVendor/viewVendor.css'
 
-    
+       
 
 const ArchivedPoDOATable = () => {
     const [archivedPOD, setArchivedPOD] = useState([]);
@@ -14,7 +14,7 @@ const ArchivedPoDOATable = () => {
 
     const viewArchivedPOD = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/po.php`)
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setArchivedPOD(response.data);
             setFilteredArchivedPOD(response.data)
         } catch (error) {

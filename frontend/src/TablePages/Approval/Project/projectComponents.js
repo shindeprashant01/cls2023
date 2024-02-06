@@ -1,6 +1,8 @@
 import React from "react";
 import ProjectTable from "./projectTable";
 import BackTheme from "../../BackTheme";
+import EmpDetailsComponents from "../../../ExtraPages/EmpDetailsComponent";
+import BackThemeFooter from "../../BackThemeFooter";
 
 
 
@@ -10,11 +12,12 @@ const ProjectTableComponents =()=>{
 
     return(
         <>
-    {/* <BackTheme/> */}
+    <BackTheme/>
+    <EmpDetailsComponents/>
       <div>
         <ProjectTable/>
         </div>
-      
+      <BackThemeFooter/>
   
      
         </>

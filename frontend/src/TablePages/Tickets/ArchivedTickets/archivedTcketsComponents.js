@@ -1,6 +1,8 @@
 import React from "react";
 import BackTheme from "../../BackTheme";
 import ArchivedTicketsTable from "./archivedTicketsTable";
+import EmpDetailsComponents from "../../../ExtraPages/EmpDetailsComponent";
+import BackThemeFooter from "../../BackThemeFooter";
 
 
 
@@ -14,16 +16,13 @@ const  ArchivedTicketsTableComponents =()=>{
         <>
      
        <BackTheme/>
+       <EmpDetailsComponents/>
 
        <div style={{marginTop:'100px',marginRight:'15px',marginBottom:'50px'}}>
   
            <ArchivedTicketsTable/>
         </div>
-        <div>
-     
-   
-        </div>
- 
+        <BackThemeFooter/>
   
      
         </>

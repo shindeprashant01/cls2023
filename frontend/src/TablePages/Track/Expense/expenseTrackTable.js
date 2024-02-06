@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 // import '../../addVendor/viewVendor.css'
 import newApiUrl from "../../config";
    
-       
+          
 
 const ExpenseTrackTable = () => {
   const [expenseTrack, setExpenseTrack] = useState([]);
@@ -15,7 +15,7 @@ const ExpenseTrackTable = () => {
 
   const viewExpenseTrack = async () => {
     try {
-      const response = await axios.get(`${newApiUrl}/amc_expense.php?id=GET`)
+      const response = await axios.get(`${newApiUrl}/amc_expense.php?id=get`)
       // setExpenseTrack(response.data);
       setFilteredExpenseTrack(response.data);
       setExpenseTrack(response.data);
@@ -55,7 +55,8 @@ const ExpenseTrackTable = () => {
     },
     {
       name: <div id="demo">Service</div>,
-      selector: (row) => row.service_name,
+      selector: (row) => row.service_name  + row.s_remark,
+      // selector: (row) => row.remark,
       sortable: true,
       wrap: true,
     },
@@ -79,12 +80,12 @@ const ExpenseTrackTable = () => {
     },
     {
       name: <div id="demo">Date</div>,
-      selector: (row) => row.Date,
+      selector: (row) => row.filename,
       sortable: true,
     },
     {
       name: <div id="demo">Approved/Paid Date</div>,
-      selector: (row) => row.Approved_by,
+      selector: (row) => row.Date,
       sortable: true,
       wrap: true,
     },
@@ -96,7 +97,7 @@ const ExpenseTrackTable = () => {
     },
     {
       name: <div id="demo">Remark(Disapproved)</div>,
-      selector: (row) => row.disapprove_remark,
+      selector: (row) => row.body,
       sortable: true,
       wrap: true,
     },
@@ -116,7 +117,7 @@ const ExpenseTrackTable = () => {
 
   useEffect(() => {
     const results = expenseTrack.filter(singleOrders => {
-      return singleOrders.Amount.toLowerCase().match(searchET.toLocaleLowerCase());
+      return singleOrders.ID.toLowerCase().match(searchET.toLocaleLowerCase());
     });
 
     setFilteredExpenseTrack(results)
@@ -187,7 +188,7 @@ const ExpenseTrackTable = () => {
           }
           subHeader
           subHeaderComponent={
-            <input type="text" placeholder="Search Here"
+            <input type="text" placeholder="Search By Expense ID"
               className="w-25 form-control"
               value={searchET}
               onChange={(e) => setSearchET(e.target.value)} />

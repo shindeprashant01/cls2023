@@ -1,6 +1,8 @@
 import React from "react";
 import BackTheme from "../BackTheme";
 import ExpenseTrackSeTable from "./expenseTrackSeTable";
+import EmpDetailsComponents from "../../ExtraPages/EmpDetailsComponent";
+import BackThemeFooter from "../BackThemeFooter";
  
 
 
@@ -10,15 +12,13 @@ const ExpenseTrackSeTableComponents =()=>{
         <>  
     
      <BackTheme/>
+     <EmpDetailsComponents/>
    
      
      <div style={{marginTop:'100px',marginRight:'15px',marginBottom:'50px'}}>
            <ExpenseTrackSeTable/>
         </div>
-        <div>
-     
-   
-        </div>
+     <BackThemeFooter/>
  
   
      

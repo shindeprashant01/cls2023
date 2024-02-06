@@ -14,7 +14,7 @@ const ArchivePMTable = () => {
 
     const ArchivePM = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/pm_schedule.php`)
+            const response = await axios.get(`${newApiUrl}/pm_schedule.php?id=get`)
             setArchivePM(response.data);
             setFilteredArchivePM(response.data)
         } catch (error) {
@@ -95,7 +95,7 @@ const ArchivePMTable = () => {
 
     useEffect(() => {
         const result = archivePM.filter(singleOrder => {
-            return singleOrder.OM_no.toLowerCase().match(searchAPT.toLocaleLowerCase());
+            return singleOrder.ticket_Number.toLowerCase().match(searchAPT.toLocaleLowerCase());
         });
 
         setFilteredArchivePM(result)

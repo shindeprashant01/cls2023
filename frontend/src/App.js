@@ -79,13 +79,30 @@ import LivePoDOATableComponents from './TablePages/LivePO/livePoDOAComponents';
 import ArchivedPOSATableComponents from './TablePages/ArchivedPo/archivedPoSAComponents';
 import ViewEmployeeHrTableComponents from './TablePages/HR/ViewEmployee/viewEmployeeComponents';
 import ProjectTrackIpoTablesComponents from './TablePages/Track/projectTrackIpoComponents';
-import LoginForm from './Authentication/login/login';
+import LoginForm from './Authentication/login/login';  
 import BackTheme from './TablePages/BackTheme';
-import Demovendor from './TablePages/addVendor/demoVendor';
+import Demovendor from './TablePages/addVendor/demoVendor';  
 import NewVendorUpdateForm from './components/NewVendorRegister/newVendorUpdateForm';
 import UpdatedData from './components/NewVendorRegister/vendorUpdatedData';
 import Dashboard from './Dashboard/Dashboard';
 import MultipleDashboards from './Dashboard/DashboardPrash';
+import LiveStockUpdateForm from './TablePages/Stock/LiveStock/liveStockUpdate';
+import ArchivePOSATableUpdateForm from './TablePages/ArchivedPo/archivePOSATableUpdate';
+import ViewCustomerUpdateForm from './TablePages/ViewTables/viewCustomerUpdate';
+import ViewEmployeeUpdateForm from './TablePages/ViewTables/viewEmployeeUpdate';
+import familyDetailsComponents from './TablePages/ViewTables/viewEmployeeUpdateComponents/FamilyDetails/familyDetailsComponents';
+import EducationalDetailsComponents from './TablePages/ViewTables/viewEmployeeUpdateComponents/EducationalDetails/educationalDetailsComponents';
+import WorkExperienceComponents from './TablePages/ViewTables/viewEmployeeUpdateComponents/WorkExperience/workExperienceComponents';
+import AchievementComponents from './TablePages/ViewTables/viewEmployeeUpdateComponents/Achievement/achievementComponents';
+import InvoiceScheduleUpdateCompoenents from './TablePages/Account/AccountReceivable/invoiceScheduleUpdate/invoiceScheduleUpdateComponents';
+import EditPmScheduleForm from './TablePages/PMSchedule/editPmSchedule';
+import EditPmScheduleComponent from './TablePages/PMSchedule/editPmScheduleComponent';
+import SignForm from './Authentication/login/signin';
+import HomePage from './components/HomeComponent/home';
+import ExpenseRequest from './components/ExpenseRequest/expenseRequest';
+import PurchaseRequest from './components/PurchaseRequest/purchaseRequest';
+import EmpDetailsComponents from './ExtraPages/EmpDetailsComponent';
+import FrontPage from './ExtraPages/FrontPage/frontpage';
 
 
 
@@ -102,22 +119,31 @@ function App() {
   return (
 
     <Router >  
-      <div style={{marginBottom:'200px'}}>
-        <BackTheme/>
-
-
-  
-    <Routes>
-    <Route  path="/" Component={HomeComponents}/>
+      <div >
+        {/* <BackTheme/> */}
+    <Routes> 
+    <Route  path="/" Component={FrontPage}/>
+    <Route  path="/empComponents" Component={EmpDetailsComponents}/>
+    <Route  path="/home" Component={HomeComponents}/>
+    <Route  path="/login" Component={LoginForm}/>
+    <Route  path="/signin" Component={SignForm}/>
     <Route path='/dashboard' Component={Dashboard}/>
     <Route path='/dashboardPrashant' Component={MultipleDashboards}/>
-    <Route  path="/purchase_form" Component={PurchaseFormComponents}/>
-    <Route  path="/purchase_request" Component={PurchaseReqComponents}/>
-    <Route  path="/expense_request" Component={ExpenseReqComponents}/>
+    <Route  path="/purchase_form" Component={PurchaseFormComponents}/>  
+    
+
+     
+    {/* track -> purchase track */}
+    <Route  path="/AMC_purchase" Component={PurchaseReqComponents}/>
+    {/* ApprovalPurchase */}
+
+    <Route  path="/AMC_expense" Component={ExpenseReqComponents}/>
+    {/* track-> expense track */}
     <Route  path="/vendor_register" Component={NewVendorRegComponents}/>
     <Route  path="/employee_register" Component={EmployeeRegiComponents}/>
     <Route  path="/customer_register" Component={CustomerRegiComponents}/>
     <Route  path="/create_tickets" Component={CreateTicketComponents}/>
+    {/* live Tickets */}
     <Route  path="/report_admin" Component={ReportAdminComponents}/>
     <Route  path="/create_project" Component={CreateProjectComponents}/>
     {/* <Route  path="/purchase_table" Component={PurchaseTablePage}/> */}
@@ -133,43 +159,52 @@ function App() {
     <Route  path="/Approval_project_expense" Component={ExpenseTableComponents}/> 
     <Route  path="/request_purchase" Component={PurchaseRequestTableComponents}/>
 
-    <Route path='view_vendor' Component={ViewVendorTableComponents}/>
-    
-    <Route path='/update_vendor' Component={NewVendorUpdateForm}/>
-    <Route path='/updated_vendorsdetails' Component={UpdatedData}/>
-    <Route path='demo_vendor' Component={Demovendor}/>
 
-    <Route path='amc_expense_status' Component={ExpenseTrackTableComponents}/>
-    <Route path='amc_purchase_status' Component={PurchaseTrackTableComponents}/>
-    <Route path='expenses_report_list' Component={ExpenseReportTableComponents}/>
-    <Route path='purchase_report_list' Component={PurchaseReportTableComponents} />
-    <Route path='update_amc_internal_po_list' Component={AmendPoTableComponents} />
-    <Route path='Internal_po_list' Component={ViewPoTableComponents}/>
-    <Route path='view_stock' Component={LiveStockTableComponents}/>
-    <Route path='view_stock_hod' Component={LiveStockHodTableComponents}/>
-    <Route path='archived_stock' Component={ArchivedStockTableComponents}/>
-    <Route path='archived_stock_hod' Component={ArchivedStockHodTableComponents}/>
+
+    <Route path='/amc_expense_status' Component={ExpenseTrackTableComponents}/>
+    <Route path='/amc_purchase_status' Component={PurchaseTrackTableComponents}/>
+    <Route path='/expenses_report_list' Component={ExpenseReportTableComponents}/>
+    <Route path='/purchase_report_list' Component={PurchaseReportTableComponents} />
+    <Route path='/update_amc_internal_po_list' Component={AmendPoTableComponents} />
+    <Route path='/Internal_po_list' Component={ViewPoTableComponents}/>
+    <Route path='/view_stock' Component={LiveStockTableComponents}/>
+    <Route path='/update_stock' Component={LiveStockUpdateForm}/>
+
+    <Route path='/view_stock_hod' Component={LiveStockHodTableComponents}/>
+    <Route path='/archived_stock' Component={ArchivedStockTableComponents}/>
+    <Route path='/archived_stock_hod' Component={ArchivedStockHodTableComponents}/>
     
     <Route path='/Add_PM_schedule' Component={PMScheduleTableComponents}/>
+    <Route path='/edit_PM_schedule' Component={EditPmScheduleComponent}/>
     <Route path='/new_cls/live_PO' Component={LivePoTableComponents}/>
     <Route path='/live_cc_DOA' Component={LivePoDOATableComponents}/>
     
-
-
     <Route path='/requested_tables' Component={RequestedPoTable}/>
 
     <Route path='/archive_po' Component={ArchivedPOTableComponents}/> 
     <Route path='/archive_po_DOA' Component={ArchivedPODOATableComponents}/> 
     <Route path='/archive_po_sa' Component={ArchivedPOSATableComponents}/>
- 
+    <Route path='/edit_archived_po' Component={ArchivePOSATableUpdateForm}/>
 
     <Route path='/disapprove_po_list' Component={RequestedPOTableComponents}/>
     <Route path='/recent_live_po_AA' Component={RCAPoTablesComponents}/>
     <Route path='/recent_live_po_HOD' Component={RCAPoTablesComponents}/>
     <Route path='/live_ticket' Component={LiveTicketsTableComponents}/>
     <Route path='/archive_ticket' Component={ArchivedTicketsTableComponents}/>
-    <Route path='/View_customer' Component={ViewCustomerTableComponents}/>
+
+    <Route path='/view_vendor' Component={ViewVendorTableComponents}/>
+    <Route path='/edit_vendor' Component={NewVendorUpdateForm}/>
+    <Route path='/updated_vendorsdetails' Component={UpdatedData}/>
+    {/* <Route path='demo_vendor' Component={Demovendor}/> */}
+    <Route path='/view_customer' Component={ViewCustomerTableComponents}/>
+    <Route path='/edit_customer' Component={ViewCustomerUpdateForm}/>
+
     <Route path='/view_employee' Component={ViewEmployeeTableComponents}/> 
+    <Route path='/edit_employee' Component={ViewEmployeeUpdateForm}/> 
+    <Route path='/family_details' Component={familyDetailsComponents}/>
+    <Route path='/educational_details' Component={EducationalDetailsComponents} />
+    <Route path='/work_experience' Component={WorkExperienceComponents} />
+    <Route path='/achievement_details' Component={AchievementComponents} />
     {/* <Route path='/View_vendors' Component={ViewVendorsTablesComponents}/> */}
     <Route path='/pm_track_aa' Component={PMTrackTablesComponents}/>  
     <Route path='/FM_track' Component={PMTrackTablesComponents}/>   
@@ -196,18 +231,20 @@ function App() {
    
    
      {/* Account */}
-    <Route path='AMC_expense_pay' Component={ExpensePaymentTableComponents}/>
-    <Route path='Acc_amc_purchase_pay' Component={PurchasePaymentTableComponents}/>
-    <Route path='live_cc_receivable' Component={LivePoReceivableTableComponents}/>
-    <Route path='archive_po_receivable' Component={ArchivedPOReceivableTableComponents}/>
-    <Route path='Add_invoice_schedule' Component={InvoiceScheduleRTableComponents}/>
-    <Route path='invoice_months_acc' Component={DueInvoiceTableComponents}/>
-    <Route path='invoice_accounts' Component={InvoiceCollectionTableComponents}/>
-    <Route path='live_cc_admin_associate' Component={LivePoAccTableComponents}/>
-    <Route path='update_invoice_list' Component={UpdateInvoiceTableComponents}/>
-    <Route path='live_cc_account' Component={CreateInvoiceTableComponents}/>
-    <Route path='live_ticket_se' Component={LiveTicketsSeTableComponents}/>
-    <Route path='amc_expense_status_s' Component={ExpenseTrackSeTableComponents}/>
+    <Route path='/AMC_expense_pay' Component={ExpensePaymentTableComponents}/>
+    <Route path='/Acc_amc_purchase_pay' Component={PurchasePaymentTableComponents}/>
+    <Route path='/live_cc_receivable' Component={LivePoReceivableTableComponents}/>
+    <Route path='/archive_po_receivable' Component={ArchivedPOReceivableTableComponents}/>
+    <Route path='/Add_invoice_schedule' Component={InvoiceScheduleRTableComponents}/>
+    <Route path='/edit_invoice_schedule' Component={InvoiceScheduleUpdateCompoenents}/>
+
+    <Route path='/invoice_months_acc' Component={DueInvoiceTableComponents}/>
+    <Route path='/invoice_accounts' Component={InvoiceCollectionTableComponents}/>
+    <Route path='/live_cc_admin_associate' Component={LivePoAccTableComponents}/>
+    <Route path='/update_invoice_list' Component={UpdateInvoiceTableComponents}/>
+    <Route path='/live_cc_account' Component={CreateInvoiceTableComponents}/>
+    <Route path='/live_ticket_se' Component={LiveTicketsSeTableComponents}/>
+    <Route path='/amc_expense_status_s' Component={ExpenseTrackSeTableComponents}/>
 
    {/* Servie Engineer */}
    

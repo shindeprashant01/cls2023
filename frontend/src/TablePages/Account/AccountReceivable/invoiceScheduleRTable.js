@@ -5,6 +5,7 @@ import axios from "axios";
 import { Button } from "react-bootstrap";
 // import '../addVendor/viewVendor.css'
 import newApiUrl from "../../config";
+import { Link} from 'react-router-dom';
 
 
 const InvoiceScheduleRTable= () => {
@@ -14,7 +15,7 @@ const InvoiceScheduleRTable= () => {
 
   const viewInvoiceScheduleR = async ()=>{
     try{
- const response = await axios.get(`${newApiUrl}/cost_case.php`)
+ const response = await axios.get(`${newApiUrl}/cost_case.php?id=get`)
      setInvoiceScheduleR(response.data);
      setFilteredInvoiceScheduleR(response.data)
     } catch(error){
@@ -35,15 +36,17 @@ const InvoiceScheduleRTable= () => {
     },
     {
         name:<div id="demo">Add Invoice Schedule</div>,
-        cell :(row)=><div>
-  
-      <button  size="sm" className="btn btn-trasnparent" style={{color:'red'}} onClick={()=> alert(row.id)} > Add Invoice Schedule</button>
-      </div> 
+        cell :(row)=>(
+          <Link to={{ 
+            pathname: "/edit_invoice_schedule",
+            search: `?emp=${row.emp_id}`, 
+             }}><Button> Add Invoice Schedule</Button></Link>
+        )
        
       },
       {
         name:<div id="demo">PO ID</div>,
-        selector: (row) => row.body,
+        selector: (row) => row.OnM_id,
         sortable:true,
         wrap:true,
       },

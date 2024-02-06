@@ -5,17 +5,18 @@ import axios from "axios";
 import '../../App.css'
 import newApiUrl from "../config";
 // import '../addVendor/viewVendor.css'
+import { Link} from 'react-router-dom';
 
 
-
-const ViewCustomerTable = () => {
+     
+const   ViewCustomerTable = () => {
     const [viewCustomer, setViewCustomer] = useState([]);
     const [searchVC, setSearchVC] = useState("");
     const [filterViewCustomer, setFilteredViewCustomer] = useState([]);
 
     const viewCustomers = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/customer.php`)
+            const response = await axios.get(`${newApiUrl}/customer.php?id=get`)
             setViewCustomer(response.data);
             setFilteredViewCustomer(response.data)
         } catch (error) {
@@ -68,9 +69,13 @@ const ViewCustomerTable = () => {
 
         {
             name:<div id="demo">Edit</div>,
-            cell :(row)=> <Button variant="outline-primary" size="lg" onClick={()=> alert(row.id)} > Edit </Button>
-           
-          },
+            cell :(row)=> (
+                <Link to={{ 
+                    pathname: "/edit_customer",
+                    search: `?cust_id=${row.CUST_ID}`, 
+                     }}><Button> Edit</Button></Link>
+            )
+          },  
           {
             name:<div id="demo">Delete</div>,
             cell :(row)=> <Button variant="outline-danger" size="lg"  onClick={()=> alert(row.id)} > Delete </Button>

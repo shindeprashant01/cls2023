@@ -14,7 +14,7 @@ const ArchivedTicketsTable = () => {
 
     const viewArchivedTickets = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/tickite.php`)
+            const response = await axios.get(`${newApiUrl}/tickite.php?id=get`)
             setArchivedTickets(response.data);
             setFilteredArchivedTickets(response.data)
         } catch (error) {
@@ -27,7 +27,6 @@ const ArchivedTicketsTable = () => {
     const columnnsArchivedTickets = [
         {
             name: <div id="demo">Sr NO.</div>,
-
             selector: (row) => row.id,
             sortable: true,
             wrap:true,
@@ -35,7 +34,7 @@ const ArchivedTicketsTable = () => {
         },
 
         {
-            name: <div id="demo">    Ticket ID</div>,
+            name: <div id="demo">  Ticket ID</div>,
             selector: (row) => row.tikckit_id,
             sortable: true,
             wrap:true,
@@ -65,7 +64,7 @@ const ArchivedTicketsTable = () => {
             wrap:true,
         },
         {
-            name: <div id="demo">Total Created By</div>,
+            name: <div id="demo">Ticket Created By</div>,
             selector: (row) => row.ticket_usertype,
             sortable: true,
             wrap:true,

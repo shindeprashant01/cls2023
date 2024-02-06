@@ -3,10 +3,11 @@ import { Button } from "react-bootstrap";
 import DataTable from 'react-data-table-component';
 import axios from "axios";
 import newApiUrl from "../config";
-import '../../App.css'
+import '../../App.css';
+import { Link} from 'react-router-dom';
 
 // import '../addVendor/viewVendor.css'
-
+    
 
     
 const ViewEmployeeTable = () => {
@@ -16,9 +17,11 @@ const ViewEmployeeTable = () => {
 
     const viewEmployees = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/employee.php`)
+            const response = await axios.get(`${newApiUrl}/employee.php?id=get`)
             setViewEmployee(response.data);
-            setFilteredViewEmployee(response.data)
+            setFilteredViewEmployee(response.data);
+            console.log(response.data);
+
         } catch (error) {
             console.log(error);
         }
@@ -88,7 +91,15 @@ const ViewEmployeeTable = () => {
 
         {
             name:<div id="demo">Edit</div>,
-            cell :(row)=> <Button variant="outline-primary" size="sm" onClick={()=> alert(row.id)} > Edit </Button>
+            cell :(row)=>(
+
+
+                <Link to={{ 
+                    pathname: "/edit_employee",
+                    search: `?emp_id=${row.emp_id}`, 
+                     }}><Button> Edit</Button></Link>
+
+            )
            
           },
           {

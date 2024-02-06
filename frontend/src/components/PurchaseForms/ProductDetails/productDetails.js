@@ -262,7 +262,7 @@ const calculate = () => {
               </Form.Select>
             </div>
           </div>
-
+            
           <div className="input-container-vendor-detail">
                       <label className="label-pforms">Product Value:</label>
                       <input

@@ -1,6 +1,7 @@
 import React from "react";
 
 import FMSEmployeeTable from "./fmsEmployeeTable";
+import EmpDetailsComponents from "../../ExtraPages/EmpDetailsComponent";
 
 
    
@@ -333,21 +334,7 @@ const FMSEmployeeTableComponents =()=>{
           </div>
         </div>
 
-        <div
-          id="navDemo"
-          className="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large"
-        >
-          <a href="#" className="w3-bar-item w3-button w3-padding-large"></a>
-          <a href="#" className="w3-bar-item w3-button w3-padding-large">
-            Link 2
-          </a>
-          <a href="#" className="w3-bar-item w3-button w3-padding-large">
-            Link 3
-          </a>
-          <a href="#" className="w3-bar-item w3-button w3-padding-large">
-            My Profile
-          </a>
-        </div>
+       
 
         <div className="w3-container ">
           {/* -- The Grid -- */}
@@ -355,24 +342,7 @@ const FMSEmployeeTableComponents =()=>{
             {/* -- Left Column -- */}
             <div className="w3-col m3" style={{display:"flex", justifyContent:"space-between",width:'1250px',marginTop:'50px'}}>
               {/* -- Profile -- */}
-              <div className=" w3-card w3-round w3-white top-portion-my-profile" style={{marginRight:'15px'}}>
-                <div className=" employee-box" style={{marginTop:'40px'}}>
-                  <h4 className="w3-center">My Profile</h4>
-                  <hr />
-                  <p>
-                    <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>
-                    Employee ID:-
-                  </p>
-                  <p>
-                    <i className="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>
-                    Employee Type:-
-                  </p>
-                  <p>
-                    <i className="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>
-                    Name:- <i id="Name"></i>
-                  </p>
-                </div>     
-              </div>
+             <EmpDetailsComponents/>
               <div className="w3-card w3-round w3-white top-portion-my-profile" style={{marginRight:'15px'}}>
                 <div className="  employee-box" style={{marginTop:'40px', }}>
                   <h4 className="w3-center" style={{color:'rgb(67, 190, 206)'}}>PO Count</h4>

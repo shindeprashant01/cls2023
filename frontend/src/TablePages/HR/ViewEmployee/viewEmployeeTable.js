@@ -4,8 +4,10 @@ import DataTable from 'react-data-table-component';
 import axios from "axios";
 import newApiUrl from "../../config";
 // import '../addVendor/viewVendor.css'
+import { Link} from 'react-router-dom';
+import { Button } from "react-bootstrap";
 
-
+      
 
 const ViewEmployeeHrTable = () => {
     const [vEH, setVEH] = useState([]);
@@ -14,11 +16,11 @@ const ViewEmployeeHrTable = () => {
 
     const viewVEH= async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/employee.php`)
+            const response = await axios.get(`${newApiUrl}/employee.php?id=get`)
             setVEH(response.data);
             setFilteredVEH(response.data)
         } catch (error) {
-            console.log(error);
+            console.log(error);    
         }
     };
 
@@ -81,10 +83,15 @@ const ViewEmployeeHrTable = () => {
         },
         {
             name:<div id="demo">Edit</div>,
-            cell :(row)=><div>
-      
-          <button  size="sm" className="btn btn-trasnparent" style={{color:'blue'}} onClick={()=> alert(row.id)} >Edit</button>
-          </div> 
+            cell :(row)=>(
+
+
+                <Link to={{ 
+                    pathname: "/edit_employee",
+                    search: `?emp=${row.emp_id}&Name=${row.emp_name}&contact=${row.emp_contact}&email=${row.emp_email}`, 
+                     }}><Button> Edit</Button></Link>
+
+            )
            
         },
         {

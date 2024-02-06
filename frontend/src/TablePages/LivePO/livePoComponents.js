@@ -1,7 +1,8 @@
 import React from "react";
 // import { PieChart } from 'react-minimal-pie-chart';
 import LivePoTable from "./livePoTable";
-import HomeComponents from "../../components/HomeComponent/homeComponent";
+// import HomeComponents from "../../components/HomeComponent/homeComponent";
+import EmpDetailsComponents from "../../ExtraPages/EmpDetailsComponent";
 
    
 
@@ -356,7 +357,9 @@ const LivePoTableComponents =()=>{
             {/* -- Left Column -- */}
             <div className="w3-col m3" style={{display:"flex", justifyContent:"space-between",width:'1250px',marginTop:'50px'}}>
               {/* -- Profile -- */}
-              <div className=" w3-card w3-round w3-white top-portion-my-profile">
+
+              <EmpDetailsComponents/>
+              {/* <div className=" w3-card w3-round w3-white top-portion-my-profile">
                 <div className=" employee-box" style={{marginTop:'40px'}}>
                   <h4 className="w3-center">My Profile</h4>
                   <hr />
@@ -373,7 +376,7 @@ const LivePoTableComponents =()=>{
                     Name:- <i id="Name"></i>
                   </p>
                 </div>     
-              </div>
+              </div> */}
               <div className="w3-card w3-round w3-white top-portion-my-profile">
                 <div className="  employee-box" style={{marginTop:'40px', }}>
                   <h4 className="w3-center" style={{color:'rgb(67, 190, 206)'}}>Live PO Count</h4>
@@ -399,7 +402,7 @@ const LivePoTableComponents =()=>{
                   <hr />
                   <p>
                     <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>
-                 
+                   Emp id :
                   </p>
                   <p>
                     <i className="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>

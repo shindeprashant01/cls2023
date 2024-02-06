@@ -15,7 +15,7 @@ const AmendPoTable= () => {
 
   const viewAmendPo = async ()=>{
     try{
- const response = await axios.get(`${newApiUrl}/new_purchaesorder.php`)
+ const response = await axios.get(`${newApiUrl}/new_purchaesorder.php?id=get`)
      setAmendPo(response.data);
      setFilteredAmendPo(response.data)
     } catch(error){

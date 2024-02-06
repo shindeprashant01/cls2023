@@ -14,7 +14,7 @@ const ReqeustedPoTables = () => {
 
     const viewRequestedPO = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/po.php`)
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setRequestedPO(response.data);
             setFilteredRequestedPO(response.data)
         } catch (error) {

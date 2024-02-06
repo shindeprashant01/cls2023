@@ -1,6 +1,8 @@
 import React from "react";
 import ExpenseReportTable from "./expenseReportTable";
 import BackTheme from "../../BackTheme";
+import EmpDetailsComponents from "../../../ExtraPages/EmpDetailsComponent";
+import BackThemeFooter from "../../BackThemeFooter";
 
 
 
@@ -13,14 +15,11 @@ const ExpenseReportTableComponents =()=>{
         <>
      
      <BackTheme/>
+     <EmpDetailsComponents/>
      <div style={{marginTop:'100px',marginRight:'15px',marginBottom:'50px'}}>
   <ExpenseReportTable/>
         </div>
-        <div>
-   
-   
-        </div>
- 
+<BackThemeFooter/>
   
      
         </>

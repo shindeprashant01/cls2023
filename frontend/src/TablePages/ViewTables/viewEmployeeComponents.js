@@ -1,6 +1,8 @@
 import React from "react";
 import BackTheme from "../BackTheme";
 import ViewEmployeeTable from "./viewEmployeeTable";
+import EmpDetailsComponents from "../../ExtraPages/EmpDetailsComponent";
+import BackThemeFooter from "../BackThemeFooter";
 
 
 
@@ -12,14 +14,12 @@ const ViewEmployeeTableComponents =()=>{
        
    
         <BackTheme/>
+        <EmpDetailsComponents/>
     
      <div style={{marginTop:'100px',marginRight:'15px',marginBottom:'50px'}}>
     <ViewEmployeeTable/>
         </div>
-        <div>
-     
-   
-        </div>
+    <BackThemeFooter/>
  
   
      

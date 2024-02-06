@@ -1,16 +1,61 @@
-import React from "react";
+import React,{useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./expenseRequest.css";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import newApiUrl from "../../TablePages/config";
 
 const ExpenseRequest = () => {
-  return (
-    <div>
+  const navigate = useNavigate();
+
+  const [purchases,setPurchases] = useState({
+    ticket_id: "",
+    requested_date: "",
+    Created_by: "",
+    service_name: "",
+    Amount: "",
+    Description: "",
+    cc_id:"", 
+    Date:"",
+    Approved_by:"",
+   
+  });
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+  setPurchases((values) => ({ ...values, [name]: value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    try {
+      console.log(purchases);
+      var jsonStr = '{"purchase":[],"man_power":[]}';
+      var obj = JSON.parse(jsonStr);
+
+      obj["purchase"].push(purchases);
+
+      jsonStr = JSON.stringify(obj);
+      console.log(jsonStr);
+      const response = axios.post(`${newApiUrl}/purchase.php?id=post`, jsonStr);
+
+    setPurchases(response.data);
+
+      navigate("/");
+      //  })
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  return (   
+    <div >
       <form>  
-        <div className="w3-container w3-card w3-white w3-round w3-margin main-box-ex-request">
+        <div className="w3-container w3-card w3-white w3-round w3-margin">
           <div className="container-ex-request">
             <div className="forms-outline-ex-request">
-              <div>
+              <div className="expense-form"> 
                 <div className="input-container-ex-request">
                   <label className="label-ex-request"> Select Project :</label>
                   <div className="input-details-ex-request">

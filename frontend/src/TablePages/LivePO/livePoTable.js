@@ -4,6 +4,8 @@ import DataTable from 'react-data-table-component';
 import axios from "axios";
 // import '../addVendor/viewVendor.css'
 import newApiUrl from "../config";
+import { Link} from 'react-router-dom';
+import { Button } from "react-bootstrap";
 
 
 
@@ -14,7 +16,7 @@ const LivePoTable = () => {
 
     const viewLivePO = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/po.php`)
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setLivePO(response.data);
             setFilteredLivePO(response.data)
         } catch (error) {
@@ -39,13 +41,13 @@ const LivePoTable = () => {
         },
         {
             name: <div id="demo">Created By</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.created_by,
             sortable: true,
             wrap:true
         },
         {
             name: <div id="demo">Po Documents</div>,
-            selector: (row) => row.po_doc,
+            selector: (row ) => row.po_doc,
             sortable: true,
             wrap:true,
         },
@@ -110,10 +112,22 @@ const LivePoTable = () => {
         },
         {
             name: <div id="demo">Action</div>,
-            selector: (row) => row.email,
-            sortable: true,
-            wrap:true
-        },
+            selector: (row)=>(
+<div>
+                <Link to={{ 
+                    pathname: "/update_stock",
+                    search: `?id=${row.id}`, 
+                     }}>Edit</Link> 
+                     <br></br>
+
+                     <Link to={{ 
+                        pathname: "/update_stock",
+                        search: `?id=${row.id}`, 
+                         }}> Delete</Link>
+
+</div>
+            )         
+          },
         // {
         //     name:<div id="demo">Purchase Description</div>,
         //     selector: (row) => row.email,
@@ -308,7 +322,7 @@ const LivePoTable = () => {
                 <div className="w3-container w3-card w3-white w3-round w3-margin">
        <div>
         <h3 style={{ marginTop: '20px', marginLeft:"10px",color: 'black' }}>
-       Service List
+                Service List
           <hr style={{ borderTop:'1px solid', color:'black'}}/>
         </h3>
    

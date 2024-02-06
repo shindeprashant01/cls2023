@@ -5,6 +5,9 @@ import Button from "react-bootstrap/Button";
 import axios from "axios";
 import newApiUrl from '../../TablePages/config';
 import { useNavigate,useParams,Link} from  'react-router-dom';
+import BackTheme from '../../TablePages/BackTheme';
+import BackThemeFooter from '../../TablePages/BackThemeFooter';
+import EmpDetailsComponents from '../../ExtraPages/EmpDetailsComponent';
 
 
 
@@ -15,10 +18,10 @@ function NewVendorUpdateForm(props)  {
 
   const queryParameters = new URLSearchParams(window.location.search)
   const vendor_id = queryParameters.get("vendor_id")
-
-
   
 
+  
+  
  const navigate = useNavigate();
 
 //  const {id} = useParams();
@@ -56,19 +59,20 @@ const[moa1,setMoa1] = useState([]);
 const[aoa1,setAoa1] = useState([]);
 const[companyProfile1,setCompanyProfile1] = useState([]);
 const[memeFile1,setMemeFile1] = useState([]);
+const [placeholderValue, setPlaceholderValue] = useState('');
 
 
   useEffect(() => {
              getUser();
              },[]);
-
+  
 
   const getUser = async () => {
     try {
       const response = await axios.get(`${newApiUrl}/vendor_details.php?id=edit&vendor_id=${vendor_id}`)
       // setExpenseTrack(response.data);
        setVendor(response.data)
-      // console.log(response.data[0].vendor_id)
+      console.log(response.data[0].vendor_id)
       setVendor_id1(response.data[0].vendor_id);
       setCompany_name1(response.data[0].Company_name);
      setCompany_address1(response.data[0].company_address);
@@ -96,8 +100,10 @@ const[memeFile1,setMemeFile1] = useState([]);
     }
   };
  const handleChange =(event)=>{
-  const name = event.target.name;
-  const value = event.target.value;
+
+  setPlaceholderValue(event.target.placeholder);
+  // const name = event.target.name;
+  // const value = event.target.value;
   // setVendor(values=>({...values,[name]:value}));
   //  setVendor_id1(values => ({...values,[name]: value}));
   //  setCompany_name1(values => ({...values,[name]: value}));
@@ -106,11 +112,48 @@ const[memeFile1,setMemeFile1] = useState([]);
   }
 
 const handleUpdate = (event) => {
-        event.preventDefault();
-   axios.put(`${newApiUrl}/vendor_details.php?id=update&vendor_id=${vendor_id}`).then(function(response){
-    console.log(response.data);
-    // navigate('/');
-   });
+  event.preventDefault();
+  try{ 
+
+    //  .then((response)=>{
+      // var jsonStr = '{"budget":[],"man_power":[]}'
+      // var obj = JSON.parse(jsonStr);
+     
+      // jsonStr = JSON.stringify(obj);
+  
+      // console.log(response.data);
+      // console.log(vendors);
+      var jsonStr = '{"updateVendor":[],"man_power":[]}'
+      var obj = JSON.parse(jsonStr);
+     
+  
+      // obj['updateVendor'].push(vendors);
+      
+      jsonStr = JSON.stringify(obj);
+          console.log(jsonStr);
+          const response = axios.put(`${newApiUrl}/vendor_details.php?id=update`,jsonStr);
+          
+  
+        //  setVendors(response.data);
+        alert('success')
+  
+      navigate('/');
+    //  })
+    }
+     catch(error){
+      console.log(error);
+     }
+
+
+
+
+
+  //       event.preventDefault();
+  //  axios.put(`${newApiUrl}/vendor_details.php?id=update&vendor_id=${vendor_id}`).then(function(response){
+  //   console.log(response.data);
+  //   alert('success')
+  //   // navigate('/');
+  //  });
 };
 
 
@@ -119,91 +162,9 @@ const handleUpdate = (event) => {
     <div>    
 
 <div>
-        <div className="w3-top">
-          <div className="w3-bar w3-theme-d2 w3-left-align w3-large nav-bar">
-            <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2">
-              <i className="fa fa-bars"></i>
-            </a>
-            <a
-              href="#1"
-              className="w3-bar-item w3-button w3-padding-large w3-theme-d4 nirvaa-cls-tag "
-            >
-              <i className="fa fa-home w3-margin-right"></i> Nirvaa CLS
-            </a>
-           
-            <div class="w3-dropdown-hover">
-              <button class="w3-button">Purchase</button>
-              <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a href="/Purchase_form" class="w3-bar-item w3-button">
-                  Purchase Form
-                </a>
-                
-              </div>
-            </div>
-            <div class="w3-dropdown-hover">
-              <button class="w3-button">Request</button>
-              <div class="w3-dropdown-content w3-bar-block w3-border">
-                <a href="/expense_request" class="w3-bar-item w3-button">
-                  Expense Request
-                </a>
-                <a href="/Purchase_request" class="w3-bar-item w3-button">
-                  Purchase Request
-                </a>
-              </div>
-            </div>
-            <div class="w3-dropdown-hover">
-            <button class="w3-button">Register</button>
-            <div class="w3-dropdown-content w3-bar-block w3-border">
-              <a href="/vendor_register" class="w3-bar-item w3-button">
-                Vendor Register
-              </a>
-              <a href="/employee_register" class="w3-bar-item w3-button">
-                Employee Register
-              </a>
-              <a href="/customer_register" class="w3-bar-item w3-button">
-              Customer Register
-            </a>
-            </div>
-          </div>
+        <BackTheme/>
 
-
-          <div class="w3-dropdown-hover">
-          <button class="w3-button">Ticket</button>
-          <div class="w3-dropdown-content w3-bar-block w3-border">
-            <a href="/create_tickets" class="w3-bar-item w3-button">
-              Create Ticket
-            </a>
-          </div>
-        </div>
-
-        <div class="w3-dropdown-hover">
-        <button class="w3-button">Report</button>
-        <div class="w3-dropdown-content w3-bar-block w3-border">
-          <a href="/report_admin" class="w3-bar-item w3-button">
-           Report
-          </a>
-        </div>
-      </div>
-      <div class="w3-dropdown-hover">
-      <button class="w3-button">PO</button>
-      <div class="w3-dropdown-content w3-bar-block w3-border">
-        <a href="/create_project" class="w3-bar-item w3-button">
-          Create Project
-        </a>
-      </div>
-    </div>
-
-            <a
-              href="#"
-              className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white"
-              title="My Account"
-            >
-              Logout
-            </a>
-          </div>
-        </div>
-
-        <div
+        {/* <div
           id="navDemo"
           className="w3-bar-block w3-theme-d2 w3-hide w3-hide-large w3-hide-medium w3-large"
         >
@@ -217,7 +178,7 @@ const handleUpdate = (event) => {
           <a href="#" className="w3-bar-item w3-button w3-padding-large">
             My Profile
           </a>
-        </div>
+        </div> */}
 
         <div className="w3-container ">
           {/* -- The Grid -- */}
@@ -225,24 +186,7 @@ const handleUpdate = (event) => {
             {/* -- Left Column -- */}
             <div className="w3-col m3">
               {/* -- Profile -- */}
-              <div className=" w3-card w3-round w3-white top-portion-my-profile">
-                <div className="w3-container employee-box">
-                  <h4 className="w3-center">My Profile</h4>
-                  <hr />
-                  <p>
-                    <i className="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i>
-                    Employee ID:-
-                  </p>
-                  <p>
-                    <i className="fa fa-home fa-fw w3-margin-right w3-text-theme"></i>
-                    Employee Type:-
-                  </p>
-                  <p>
-                    <i className="fa fa-birthday-cake fa-fw w3-margin-right w3-text-theme"></i>
-                    Name:- <i id="Name"></i>
-                  </p>
-                </div>
-              </div>
+            <EmpDetailsComponents/>
               <br />
 
               {/* -- Accordion -- */}
@@ -254,11 +198,9 @@ const handleUpdate = (event) => {
               <br />
             </div>
 
-            <div className="w3-col m4">
-              <div className="w3-container w3-card w3-white w3-round w3-margin"></div>
-            </div>
+         
           </div>
-          <div className="w3-col m4"></div>
+       
         </div>
 
         <br />
@@ -272,7 +214,12 @@ const handleUpdate = (event) => {
       <form >  
       <div className="w3-container w3-card w3-white w3-round w3-margin main-box-vendor-regi">
         <div className="container-vendor-regi">
+         
           <div className="forms-outline-vendor-regi">
+          <div >
+            <h3 style={{color:"rgb(43, 60, 158)"}}> Edit Vendor Details :</h3>
+
+          </div>
             <div>
               <div className="input-container-vendor-regi">
                 <label className="label-vendor-regi"> Vendor ID :</label>
@@ -288,6 +235,7 @@ const handleUpdate = (event) => {
                      value={vendor_id1}
                   
                   /> 
+
                 </div>
               </div>
 
@@ -308,7 +256,7 @@ const handleUpdate = (event) => {
                   /> 
                 </div>
               </div>
-                
+                <p>placeholder value :{placeholderValue}</p>
               <div className="input-container-vendor-regi">
                 <label className="label-vendor-regi"> Vendor Address :</label>
                 <div className="input-details-vendor-regi">
@@ -401,7 +349,7 @@ const handleUpdate = (event) => {
                      type="text"
                      name='vendor_email2'
                      id='vendor_email2'
-                     value={vendor.vendor_email21}
+                    //  value={vendor.vendor_email21}
                     className="form-control input-box"
                     placeholder={vendor_email21}
                     aria-label="Large"
@@ -459,8 +407,7 @@ const handleUpdate = (event) => {
                   />
                 </div>
               </div>
-          
-          
+
               <div className="input-container-vendor-regi">
                 <label className="label-vendor-regi"> Pan Card: </label>
                 <div className="input-details-vendor-regi">
@@ -482,6 +429,7 @@ const handleUpdate = (event) => {
                 </div>
               </div>
               
+
               <div className="input-container-vendor-regi">
                 <label className="label-vendor-regi">GST Certificate: </label>
                 <div className="input-details-vendor-regi">
@@ -549,7 +497,7 @@ const handleUpdate = (event) => {
                 <label className="label-vendor-regi">MOA: </label>
                 <div className="input-details-vendor-regi">
                 <div className='file-type'>
-                <input
+                <input 
                      type="text"
                      name='moa'
                      id='moa'
@@ -642,7 +590,10 @@ const handleUpdate = (event) => {
           </div>
         </div>
       </div>
+      <BackThemeFooter/>
     </form>
+
+    
    
     </div>
   )

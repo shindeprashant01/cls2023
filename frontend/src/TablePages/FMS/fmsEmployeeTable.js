@@ -14,7 +14,7 @@ const FMSEmployeeTable = () => {
 
     const viewFMS= async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/po.php`)
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setFMS(response.data);
             setFilteredFMS(response.data)
         } catch (error) {

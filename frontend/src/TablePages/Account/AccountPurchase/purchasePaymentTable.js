@@ -4,6 +4,7 @@ import axios from "axios";
 import { Button } from "react-bootstrap";
 // import "../../addVendor/viewVendor.css";
 import '../../../App.css'
+import newApiUrl from "../../config";
 
 
 
@@ -14,7 +15,7 @@ const PurchasePaymentTable= () => {
 
   const viewPurchasePayment = async ()=>{
     try{
- const response = await axios.get('https://jsonplaceholder.typicode.com/comments')
+ const response = await axios.get(`${newApiUrl}/po.php?id=get`)
  setPurchasePayment(response.data);
  setFilteredPurchasePayment(response.data)
     } catch(error){

@@ -3,10 +3,12 @@ import '../../App.css'
 import DataTable from 'react-data-table-component';
 import axios from "axios";
  import newApiUrl from "../config"; 
+ import { Link} from 'react-router-dom';
+ import Button from "react-bootstrap/Button"; 
 
 
 
-
+   
 const ArchivedPoSATable = () => {
     const [archivedPOS, setArchivedPOS] = useState([]);
     const [searchAPOS, setSearchAPOS] = useState("");
@@ -14,9 +16,10 @@ const ArchivedPoSATable = () => {
 
     const viewArchivedPOS = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/po.php`)
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setArchivedPOS(response.data);
-            setFilteredArchivedPOS(response.data)
+            setFilteredArchivedPOS(response.data);
+            console.log(response.data);
         } catch (error) {
             console.log(error);
         }
@@ -34,11 +37,15 @@ const ArchivedPoSATable = () => {
         },
         {
             name:<div id="demo">Update</div>,
-            cell :(row)=><div>
-      
-          <button  size="sm" className="btn btn-trasnparent" style={{color:'blue'}} onClick={()=> alert(row.id)} >Update </button>
-          </div> 
-           
+            cell :(row)=>(
+
+                <Link to={{ 
+                    pathname: "/edit_archived_po",
+                    search: `?cc_id=${row.cc_id}`, 
+                     }}><Button> Update</Button></Link>
+            )
+            
+       
           },
           {
             name: <div id="demo">PO ID</div>,
@@ -107,7 +114,7 @@ const ArchivedPoSATable = () => {
             wrap:true
         },
         {
-            name: <div id="demo">Service_ID</div>,
+            name: <div id="demo">Service ID</div>,
             selector: (row) => row.email,
             sortable: true,
             wrap:true
@@ -136,7 +143,6 @@ const ArchivedPoSATable = () => {
             sortable: true,
         },
        
-
     ]
 
     
@@ -167,7 +173,7 @@ const ArchivedPoSATable = () => {
                 fontSize: "14px",
                 color: "white",
                 backgroundColor: "rgb(67, 190, 206)",
-                padding: "12px",
+                padding: "8px",
                 // height:'100px'
                 // minWidht "!100px !important"
 
@@ -188,7 +194,7 @@ const ArchivedPoSATable = () => {
         },
         rows: {
             style: {
-                height:"35vh",
+                height:"20vh",
               
             }
         }

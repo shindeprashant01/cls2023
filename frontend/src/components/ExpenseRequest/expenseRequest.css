@@ -1,10 +1,43 @@
 .main-box-ex-request{
   height: 700px;
 }
+@media screen and (max-width: 822px) {
+ .expense-form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+
+ }
+  .input-container-ex-request{
+    flex-direction: column;
+    padding-left: 18rem;
+  }
+  .input-details-ex-request{
+    width: 12rem !important;
+  }
+}
+
+@media screen and (max-width: 530px) {
+
+.input-details-ex-request{
+  width: 1rem;
+}
+}
+
+@media screen and (max-width: 822px) {
+
+.text-area-ex-request{
+  width: 15rem !important;     
+}
+
+}
+
+
 .container-ex-request{
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 }
 .forms-outline-ex-request{
   padding: 35px 0 150px 250px;

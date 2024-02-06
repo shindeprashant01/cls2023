@@ -3,7 +3,7 @@ import DataTable  from 'react-data-table-component';
 import axios from "axios";
 import { Button } from "react-bootstrap";
 // import "../../addVendor/viewVendor.css";
-import '../../../App.css'
+// import '../../../App.css'
 
 
 

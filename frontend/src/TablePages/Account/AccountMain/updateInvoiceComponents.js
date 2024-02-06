@@ -1,6 +1,8 @@
 import React from "react";
 import BackTheme from "../../BackTheme";
 import UpdateInvoiceTable from "./updateInvoiceTable";
+import EmpDetailsComponents from "../../../ExtraPages/EmpDetailsComponent";
+import BackThemeFooter from "../../BackThemeFooter";
 ;
 
 
@@ -15,14 +17,12 @@ const UpdateInvoiceTableComponents =()=>{
      
      
 <BackTheme/>
+<EmpDetailsComponents/>
   
 <div style={{marginTop:'100px',marginRight:'15px',marginBottom:'50px'}}>
  <UpdateInvoiceTable/>
         </div>
-        <div>
-     
-   
-        </div>
+   <BackThemeFooter/>
  
   
      

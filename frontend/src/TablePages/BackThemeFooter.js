@@ -3,7 +3,7 @@ import React from 'react'
 const BackThemeFooter = () => {
   return (
     
-         <div>
+         <div style={{width:"105%"}}>
           <footer
             className="w3-container w3-theme-d3 w3-padding-16 footer-mainTag"
           >
@@ -11,7 +11,6 @@ const BackThemeFooter = () => {
           </footer>
           <footer
             className="w3-container w3-theme-d5 footer-subline footer-mainTag-1"
-      
           >
             <p>
               Powered by

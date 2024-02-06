@@ -1,0 +1,31 @@
+.main-box-vendor-regi{
+    height: 1500px;
+  }
+
+
+
+
+.input-container-update-employee {
+    display: flex;
+    margin:25px 10px 30px 25px;
+}
+
+.labels-update-employeee{
+    width :205px !important;
+    text-align: left;
+}
+.labels-update-employeee-select{
+
+width :170px !important;
+    text-align: left;
+}
+.input-div-update-employee{
+    width:825px;
+    /* margin-left: 40px; */
+}
+
+.sub-nav-bar-update-employee{
+    display: flex;
+    justify-content: center;
+    width: 83%;
+}

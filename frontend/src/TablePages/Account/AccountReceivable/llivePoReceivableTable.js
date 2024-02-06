@@ -14,7 +14,7 @@ const LivePoReceivableTable = () => {
 
     const viewLivePOR = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/po.php`)
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setLivePOR(response.data);
             setFilteredLivePOR(response.data)
         } catch (error) {

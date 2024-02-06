@@ -15,7 +15,7 @@ const LiveTicketsTable = () => {
 
     const viewLiveTickets = async () => {
         try {
-            const response = await axios.get(`${apiUrlGet}/tickite.php`)
+            const response = await axios.get(`${apiUrlGet}/tickite.php?id=get`)
             setLiveTickets(response.data);
             setFilteredLiveTickets(response.data)
         } catch (error) {
@@ -98,7 +98,7 @@ const LiveTicketsTable = () => {
 
         {
             name: <div id="demo">Status</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.Assign,
             wrap:true,
         },
 

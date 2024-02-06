@@ -23,7 +23,7 @@ const NewVendorRegiForm = () => {
     
 
 
-const [employees, setEmployees] = useState({     
+const [vendors, setVendors] = useState({     
   vendor_id :"",
   Company_name:"",
   company_address:"",
@@ -38,11 +38,11 @@ const [employees, setEmployees] = useState({
   vendor_PAN:"",
   gst_file:"",
   incorporation_file:"",
-  cancelledChequeNo:"",
-  moa:"",
-  aoa:"",
-  companyProfile:"",
-  msmeFile:"",
+  cheque_no:"",
+  moa_file:"",
+  aoa_file:"",
+  profile_file:"",
+  msme_file:"",
 
 
 });
@@ -52,7 +52,7 @@ const [employees, setEmployees] = useState({
  const handleChange =(event)=>{
     const name = event.target.name;
     const value = event.target.value;
-    setEmployees(values =>({...values , [name] :value}))
+    setVendors(values =>({...values , [name] :value}))
   
   }   
 
@@ -60,7 +60,7 @@ const [employees, setEmployees] = useState({
   // async handleSubmit({
   //   let response =()=>{
   //     return new Promise(function(resolve, reject){
-  //       fetch(`${newApiUrl}/vendor_details/php?id=post`,{employees})
+  //       fetch(`${newApiUrl}/vendor_details/php?id=post`,{vendors})
   //       .then(response =>{
   //         resolve(response);
   //       });
@@ -73,7 +73,7 @@ const [employees, setEmployees] = useState({
   // async handleSubmit(){
   //   let response = () => {
   //     return new Promise(function(resolve, reject) {
-  //      fetch(`${newApiUrl}/vendor_details.php?id=post`, {employees}
+  //      fetch(`${newApiUrl}/vendor_details.php?id=post`, {vendors}
   //       ).then(response => {
   //         resolve(response);
   //       });
@@ -86,14 +86,28 @@ const [employees, setEmployees] = useState({
 
 const handleSubmit = (event) => {
         event.preventDefault();
-        try{
+        try{ 
 
-
-        
-const response = axios.post(`${newApiUrl}/vendor_details.php?id=post`,employees)
   //  .then((response)=>{
-        console.log(response.data);
-       setEmployees(response.data);
+    // var jsonStr = '{"budget":[],"man_power":[]}'
+    // var obj = JSON.parse(jsonStr);
+   
+    // jsonStr = JSON.stringify(obj);
+
+    // console.log(response.data);
+    console.log(vendors);
+    var jsonStr = '{"vendor":[],"man_power":[]}'
+    var obj = JSON.parse(jsonStr);
+   
+
+    obj['vendor'].push(vendors);
+    
+    jsonStr = JSON.stringify(obj);
+        console.log(jsonStr);
+        const response = axios.post(`${newApiUrl}/vendor_details.php?id=post`,jsonStr);
+        
+
+       setVendors(response.data);
 
     navigate('/');
   //  })
@@ -101,14 +115,14 @@ const response = axios.post(`${newApiUrl}/vendor_details.php?id=post`,employees)
    catch(error){
     console.log(error);
    }
-  
+
 };
 
 //  console.log(data);
   return (
     <div>    
             
-      <form  onSubmit={handleSubmit}>  
+      <form  onSubmit={handleSubmit} method="POST">  
       <div className="w3-container w3-card w3-white w3-round w3-margin main-box-vendor-regi">
         <div className="container-vendor-regi">
           <div className="forms-outline-vendor-regi">
@@ -342,7 +356,7 @@ const response = axios.post(`${newApiUrl}/vendor_details.php?id=post`,employees)
                 <div className='file-type'>
                 <input
                      type="text"
-                     name='cancelledChequeNo'
+                     name='cheque_no'
                      className="form-control input-box-unique"
                     placeholder="Cancelled Cheque No."
                     aria-label="Large"
@@ -361,7 +375,7 @@ const response = axios.post(`${newApiUrl}/vendor_details.php?id=post`,employees)
                 <div className='file-type'>
                 <input
                      type="text"
-                     name='moa'
+                     name='moa_no'
                      className="form-control input-box-unique"
                     placeholder="MOA No.."
                     aria-label="Large"
@@ -380,7 +394,7 @@ const response = axios.post(`${newApiUrl}/vendor_details.php?id=post`,employees)
                 <div className='file-type'>
                 <input
                      type="text"
-                     name='aoa'
+                     name='aoa_no'
                      className="form-control input-box-unique"
                     placeholder="AOA No."
                     aria-label="Large"
@@ -418,7 +432,7 @@ const response = axios.post(`${newApiUrl}/vendor_details.php?id=post`,employees)
                 <div className='file-type'>
                 <input
                      type="text"
-                     name='msmeFile'
+                     name='msme_no'
                      className="form-control input-box-unique"
                     placeholder="MSME File No.."
                     aria-label="Large"
@@ -432,6 +446,9 @@ const response = axios.post(`${newApiUrl}/vendor_details.php?id=post`,employees)
               </div>
             
               <div className="btn-submit-vendor-regi">
+
+                {/* <input type='submit' name='submit' value="Save" /> */}
+                {/* <button onClick={handleSubmit}>Save</button> */}
                 <Button variant="primary" size='lg'  onClick={handleSubmit}>Save</Button>
               </div>
             </div>

@@ -2,6 +2,8 @@ import React from "react";
 // import { PieChart } from 'react-minimal-pie-chart';
 import LivePoDOATable from "./livePoDOATable";
 import BackTheme from "../BackTheme";
+import EmpDetailsComponents from "../../ExtraPages/EmpDetailsComponent";
+import BackThemeFooter from "../BackThemeFooter";
 
 
    
@@ -14,6 +16,7 @@ const LivePoDOATableComponents =()=>{
      
      <div style={{marginBottom:"150px"}}>
     <BackTheme/>
+    {/* <EmpDetailsComponents/> */}
         {/* <div style={{display:'flex', border:'1px solid black',margin:'200px 70px 0 70px'}}>
         <PieChart radius={18}
     data={[
@@ -42,10 +45,7 @@ const LivePoDOATableComponents =()=>{
      <div style={{marginTop:'100px',marginRight:'15px',marginBottom:'50px'}}>
    <LivePoDOATable/>
         </div>
-        <div>
-     
-   
-        </div>
+      <BackThemeFooter/>
  
   
      

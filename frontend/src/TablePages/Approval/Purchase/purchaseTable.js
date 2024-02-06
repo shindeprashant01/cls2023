@@ -15,9 +15,9 @@ const PurchaseTable= () => {
   const[searchPU, setSearchPU]= useState(""); 
   const [filterePurchase, setFilteredPurchase] = useState([]);
 
-  const viewPurchase= async ()=>{
+  const viewPurchase= async ()=>{     
     try{
- const response = await axios.get(`${newApiUrl}/new_purchaesorder_amc.php`)
+ const response = await axios.get(`${newApiUrl}/new_purchaesorder_amc.php?id=get`)
      setPurchase(response.data);
      setFilteredPurchase(response.data)
     } catch(error){

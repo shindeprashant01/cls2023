@@ -9,7 +9,7 @@ import { FaSistrix } from "react-icons/fa";
 
 // import SearchIcon from '@mui/icons-material/Search';
 // import SearchIcon from '@mui/icons-material/Search';
-
+  
 const PurchaseForm = () => {
   //   const [number, setNumber]= useState();
   // const [number2, setNumber2]= useState();
@@ -53,7 +53,7 @@ const PurchaseForm = () => {
   return (
     <div className="body-purchases">
       <form onSumbit={formHandleSumbit}>
-        <div className="w3-container w3-card w3-white w3-round w3-margin main-box-p">
+        <div className="w3-container w3-card w3-white w3-round w3-margin">
           <div className="container-pforms">
             <div className="forms-outline-pforms">
               <div>
@@ -144,7 +144,7 @@ const PurchaseForm = () => {
                       <label  htmlFor="address" className="label-pforms">Address:</label>
                       <input
                         type="text"
-                        className="form-control input-details-vendor-detail"
+                        className="form-control input-details-vendor-detail-unique"
                         placeholder="Address"
                         aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm"
@@ -154,7 +154,7 @@ const PurchaseForm = () => {
                       <label htmlFor="vendorName" className="label-pforms">Vendor Name:</label>
                       <input
                         type="text"
-                        className="form-control input-details-vendor-detail"
+                        className="form-control input-details-vendor-detail-unique"
                         placeholder="Vendor Name"
                         aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm"
@@ -165,7 +165,7 @@ const PurchaseForm = () => {
                       <label htmlFor="contactNo" className="label-pforms">Contact No.:</label>
                       <input
                         type="number"
-                        className="form-control input-details-vendor-detail"
+                        className="form-control input-details-vendor-detail-unique"
                         placeholder="Contact No."
                         aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm"
@@ -176,7 +176,7 @@ const PurchaseForm = () => {
                       <label htmlFor="gstNo" className="label-pforms">GSTIN No.:</label>
                       <input
                         type="number"
-                        className="form-control input-details-vendor-detail"
+                        className="form-control input-details-vendor-detail-unique"
                         placeholder="GSTIN No."
                         aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm"
@@ -195,7 +195,7 @@ const PurchaseForm = () => {
                       <label htmlFor="ship-name" className="label-pforms">Name:</label>
                       <input
                         type="text"
-                        className="form-control input-details-vendor-detail"
+                        className="form-control input-details-vendor-detail-unique"
                         placeholder="Name"
                         aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm"
@@ -206,7 +206,7 @@ const PurchaseForm = () => {
                       <label htmlFor="ship-address" className="label-pforms">Address:</label>
                       <input
                         type="text"
-                        className="form-control input-details-vendor-detail"
+                        className="form-control input-details-vendor-detail-unique"
                         placeholder="Address"
                         aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm"
@@ -230,7 +230,7 @@ const PurchaseForm = () => {
                       <label htmlFor="ship-se1-contact-no" className="label-pforms">Contact No.:</label>
                       <input
                         type="number"
-                        className="form-control input-details-vendor-detail"
+                        className="form-control input-details-vendor-detail-unique"
                         placeholder="Contact No."
                         aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm"
@@ -254,7 +254,7 @@ const PurchaseForm = () => {
                       <label htmlFor="ship-se2-contact-no" className="label-pforms">Contact No.:</label>
                       <input
                         type="number"
-                        className="form-control input-details-vendor-detail"
+                        className="form-control input-details-vendor-detail-unique"
                         placeholder="Contact No."
                         aria-label="Large"
                         aria-describedby="inputGroup-sizing-sm"

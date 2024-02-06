@@ -11,7 +11,7 @@ import { Link} from 'react-router-dom';
   
 const ViewVendorTable = () => {
 
-
+            
   
   const [vendor, setVendor] = useState([]);
   const [searchV, setSearchV] = useState('');
@@ -29,7 +29,7 @@ const ViewVendorTable = () => {
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, []);  
 
 
   const getUsers = async () => {
@@ -117,7 +117,7 @@ const ViewVendorTable = () => {
         // <Link to={`/update_vendor/${row.vendor_id}/edit`}> 
         
          <Link to={{ 
-        pathname: "/update_vendor",
+        pathname: "/edit_vendor",
         search: `?vendor_id=${row.vendor_id}`, 
          }}><Button> Edit</Button></Link>
   

@@ -50,7 +50,7 @@ const InvoiceScheduleTable= () => {
    
     {
       name:<div id="demo">PO ID</div>,
-      selector: (row) => row.body,
+      selector: (row) => row.PO_NO,
       sortable:true,
       wrap:true,
 

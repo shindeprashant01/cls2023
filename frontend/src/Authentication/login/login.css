@@ -45,3 +45,12 @@
     padding-right: 270px;
     margin-bottom: 50px;
   }
+
+  .error{
+    color: red;
+    font-size: 24px;
+  }
+
+  .success{
+    color:green;
+  }

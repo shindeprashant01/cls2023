@@ -1,6 +1,8 @@
 import React from "react";
 import RequestedComponent from "./requestedComponent";
 import BackTheme from "../BackTheme";
+import EmpDetailsComponents from "../../ExtraPages/EmpDetailsComponent";
+import BackThemeFooter from "../BackThemeFooter";
 
 
 const RequestedPoTable =()=>{
@@ -11,15 +13,14 @@ const RequestedPoTable =()=>{
       
    
           <BackTheme/>
+          <EmpDetailsComponents/>
      
           <div style={{marginTop:'100px',marginRight:'15px',marginBottom:'50px'}}>
           <RequestedComponent />
         </div>
 
 
-        {/* <div>
-  <BackThemeFooter/>
-        </div> */}
+   <BackThemeFooter/>
       
 
   

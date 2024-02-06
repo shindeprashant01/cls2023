@@ -3,6 +3,7 @@ import '../../../App.css'
 import DataTable  from 'react-data-table-component';
 import axios from "axios";
 import { Button } from "react-bootstrap";
+import newApiUrl from "../../config";
 // import '../addVendor/viewVendor.css'
 
 
@@ -14,7 +15,7 @@ const InvoiceCollectionTable= () => {
 
   const viewInvoiceCollection= async ()=>{
     try{
- const response = await axios.get('https://jsonplaceholder.typicode.com/comments')
+ const response = await axios.get(`${newApiUrl}/invoice.php?id=get`)
      setInvoiceCollection(response.data);
      setFilteredInvoiceCollection(response.data)
     } catch(error){
@@ -35,14 +36,14 @@ const InvoiceCollectionTable= () => {
     },
     {
         name:<div id="demo">Invoice ID</div>,
-        selector: (row) => row.body,
+        selector: (row) => row.invoice_id,
         sortable:true,
         wrap:true,
   
       },
       {
         name:<div id="demo">Order No</div>,
-        selector: (row) => row.body,
+        selector: (row) => row.buyer_order_no,
         sortable:true,
         wrap:true,
   
@@ -50,39 +51,39 @@ const InvoiceCollectionTable= () => {
   
       {
         name:<div id="demo">PO ID</div>,
-        selector: (row) => row.body,
+        selector: (row) => row.PO_id,
         sortable:true,
         wrap:true,
       },
    
     {
       name:<div id="demo">Consignee Name</div>,
-      selector: (row) => row.body,
+      selector: (row) => row.c_cust_name,
       sortable:true,
       wrap:true,
     },
     {
       name:<div id="demo">Buyer's Name</div>,
-      selector: (row) => row.body,
+      selector: (row) => row.b_cust_name,
       sortable:true,
       wrap:true,
     },
     {
       name:<div id="demo">Total PO cost</div>,
-      selector: (row) => row.body,
+      selector: (row) => row.requested_amt,
       sortable:true,
       wrap:true,
     },
   
     {
       name:<div id="demo">Total PO cost receivied</div>,
-      selector: (row) => row.email,
+      selector: (row) => row.advance_pay,
       sortable:true,
       wrap:true,
     },
     {
         name:<div id="demo">Total Pending cost</div>,
-        selector: (row) => row.body,
+        selector: (row) => row.remaining_value,
         sortable:true,
         wrap:true,
       },
@@ -101,15 +102,17 @@ const InvoiceCollectionTable= () => {
     },
     {
         name:<div id="demo">Date of request</div>,
-        selector: (row) => row.email,
+        selector: (row) => row.current_date1,
         sortable:true,
         wrap:true,
       },
       {
         name:<div id="demo">View Invoice</div>,
-        selector: (row) => row.email,
-        sortable:true,
-        wrap:true,
+        cell :(row)=><div>
+  
+      <button  size="sm" className="btn btn-trasnparent" style={{color:'green'}} onClick={()=> alert(row.id)} > View Invoice </button>
+      </div> 
+       
       },
       {
         name:<div id="demo">Payment</div>,
@@ -126,7 +129,7 @@ const InvoiceCollectionTable= () => {
           
       useEffect(()=>{
         const result=invoiceCollection.filter(singleOrder =>{
-         return singleOrder.body.toLowerCase().match(searchIC.toLocaleLowerCase());
+         return singleOrder.PO_id.toLowerCase().match(searchIC.toLocaleLowerCase());
         });
      
         setFilteredInvoiceCollection(result)

@@ -4,6 +4,8 @@ import DataTable  from 'react-data-table-component';
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import '../addVendor/viewVendor.css'
+import newApiUrl from "../config";
+import { Link} from 'react-router-dom';
 
 
 
@@ -15,7 +17,7 @@ const PMScheduleTable= () => {
 
   const viewPMSchedule = async ()=>{
     try{
- const response = await axios.get('https://jsonplaceholder.typicode.com/comments')
+ const response = await axios.get(`${newApiUrl}/po.php?id=get`)
      setPMSchedule(response.data);
      setFilteredPMSchedule(response.data)
     } catch(error){
@@ -34,87 +36,100 @@ const PMScheduleTable= () => {
   
     },
     {
-        name:<div id="demo">Add PM Schedule</div>,
-        cell :(row)=><div>
+      name:<div id="demo">Add PM Schedule</div>,
+      cell :(row)=>(
+
+
+          <Link to={{ 
+              pathname: "/edit_pm_schedule",
+              search: `?cc_id=${row.cc_id}`, 
+               }}><Button> Add PM Schedule</Button></Link>
+
+      )
+     
+    },
+    // {
+    //     name:<div id="demo">Add PM Schedule</div>,
+    //     cell :(row)=><div>
   
-      <button  size="sm" className="btn btn-trasnparent" style={{color:'green'}} onClick={()=> alert(row.id)} > Add_PM_schedule </button>
-      </div> 
+    //   <button  size="sm" className="btn btn-trasnparent" style={{color:'green'}} onClick={()=> alert(row.id)} > Add_PM_schedule </button>
+    //   </div> 
        
-      },
+    //   },
    
     {
       name:<div id="demo">PO ID</div>,
-      selector: (row) => row.body,
+      selector: (row) => row.cc_id,
       sortable:true,
       wrap:true,
     
     },
     {
       name:<div id="demo">Prime Customer</div>,
-      selector: (row) => row.body,
+      selector: (row) => row.prime_cust,
       sortable:true,
       wrap:true,
     },
     {
       name:<div id="demo">End Customer</div>,
-      selector: (row) => row.body,
+      selector: (row) => row.end_cust,
       sortable:true,
       wrap:true
     },
   
     {
       name:<div id="demo">Total PO</div>,
-      selector: (row) => row.email,
+      selector: (row) => row.total_po_cost,
       wrap:true
     },
     {
         name:<div id="demo">Total Assign Value</div>,
-        selector: (row) => row.body,
+        selector: (row) => row.cc_value,
         sortable:true,
         wrap:true
       },
     {
       name:<div id="demo">Total Remaining value</div>,
-      selector: (row) => row.email,
+      selector: (row) => row.remaining_value,
       sortable:true,
       wrap:true
     },
     {
       name:<div id="demo">Start Date</div>,
-      selector: (row) => row.email,
+      selector: (row) => row.start_date,
       sortable:true,
       wrap:true
     },
     {
       name:<div id="demo">End Date</div>,
-      selector: (row) => row.email,
+      selector: (row) => row.end_date,
       sortable:true,
       wrap:true
     },
-    {
-      name:<div id="demo">PO Number</div>,
-      selector: (row) => row.email,
-      sortable:true,
-      wrap:true
-    },
-    {
-      name:<div id="demo">View PDF</div>,
-      selector: (row) => row.email,
-      sortable:true,
-      wrap:true
-    },
-    {
-        name:<div id="demo">Purchase Description</div>,
-        selector: (row) => row.email,
-        sortable:true,
-        wrap:true
-      },
-      {
-        name:<div id="demo">Documents</div>,
-        selector: (row) => row.email,
-        sortable:true,
-        wrap:true
-      },
+    // {
+    //   name:<div id="demo">PO Number</div>,
+    //   selector: (row) => row.email,
+    //   sortable:true,
+    //   wrap:true
+    // },
+    // {
+    //   name:<div id="demo">View PDF</div>,
+    //   selector: (row) => row.email,
+    //   sortable:true,
+    //   wrap:true
+    // },
+    // {
+    //     name:<div id="demo">Purchase Description</div>,
+    //     selector: (row) => row.email,
+    //     sortable:true,
+    //     wrap:true
+    //   },
+    //   {
+    //     name:<div id="demo">Documents</div>,
+    //     selector: (row) => row.email,
+    //     sortable:true,
+    //     wrap:true
+    //   },
  
   
 ]
@@ -124,7 +139,7 @@ const PMScheduleTable= () => {
           
       useEffect(()=>{
         const result= pMSchedule.filter(singleOrder =>{
-         return singleOrder.body.toLowerCase().match(searchPMS.toLocaleLowerCase());
+         return singleOrder.cc_value.toLowerCase().match(searchPMS.toLocaleLowerCase());
         });
      
         setFilteredPMSchedule(result)

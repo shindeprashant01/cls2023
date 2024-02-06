@@ -15,7 +15,7 @@ const LivePoDOATable = () => {
 
     const viewLivePOD = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/po.php`)
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setLivePOD(response.data);
             setFilteredLivePOD(response.data)
         } catch (error) {

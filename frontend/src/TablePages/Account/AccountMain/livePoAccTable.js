@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../../App.css"
 import DataTable from 'react-data-table-component';
 import axios from "axios";
+import newApiUrl from "../../config";
 
 // import '../addVendor/viewVendor.css'
 
@@ -14,7 +15,7 @@ const LivePoAccTable = () => {
 
     const viewLivePOAcc = async () => {
         try {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/comments')
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setLivePOAcc(response.data);
             setFilteredLivePOAcc(response.data)
         } catch (error) {
@@ -33,31 +34,31 @@ const LivePoAccTable = () => {
         },
         {
             name: <div id="demo">PO ID</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.cc_id,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Project Manager</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.Project_manager,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Created By</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.created_by,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">PO Documents</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.po_doc,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">SOW</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.Sow,
             sortable: true,
             wrap:true,
         },
@@ -67,7 +68,7 @@ const LivePoAccTable = () => {
 
         {
             name: <div id="demo">Prime Customer</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.prime_cust,
             sortable: true,
             wrap:true,
         },
@@ -75,69 +76,69 @@ const LivePoAccTable = () => {
 
         {
             name: <div id="demo">End Customer</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.end_cust,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Total PO</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.total_po_cost,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Total Assign Value</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.cc_value,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Total Remaining Value</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.remaining_value,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Start Date</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.start_date,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">End Date</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.end_date,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Service ID</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.s_id,
             sortable: true,
             wrap:true,
         },
       
         {
             name: <div id="demo">Service Name</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.s_name,
             sortable: true,
             wrap:true,
         },
        
         {
             name: <div id="demo">Manager</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.manager,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">AMC</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.amc,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Assign value</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.value,
             sortable: true,
             wrap:true,
         },
@@ -166,7 +167,7 @@ const LivePoAccTable = () => {
 
     useEffect(() => {
         const result = livePOAcc.filter(singleOrder => {
-            return singleOrder.body.toLowerCase().match(searchLPOAcc.toLocaleLowerCase());
+            return singleOrder.cc_id.toLowerCase().match(searchLPOAcc.toLocaleLowerCase());
         });
 
         setFilteredLivePOAcc(result)

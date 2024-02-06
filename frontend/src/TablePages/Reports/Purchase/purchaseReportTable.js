@@ -15,7 +15,7 @@ const PurchaseReportTable= () => {
 
   const viewPurchaseReport = async ()=>{
     try{
- const response = await axios.get('https://jsonplaceholder.typicode.com/comments')
+ const response = await axios.get('http://jsonplaceholder.typicode.com/comments')
      setPurchaseReport(response.data);
      setFilteredPurchaseReport(response.data)
     } catch(error){

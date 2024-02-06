@@ -16,7 +16,7 @@ const ProjectTrackIpoTable = () => {
 
     const ProjectTrackI = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/track_record_ipo.php`)
+            const response = await axios.get(`${newApiUrl}/track_record_ipo.php?id=get`)
             setProjectTrackI(response.data);
             setFilteredProjectTrackI(response.data)
         } catch (error) {
@@ -30,7 +30,7 @@ const ProjectTrackIpoTable = () => {
         {
             name:<div id="demo">UserID</div>,
             
-            selector: (row)=> row.ID,
+            selector: (row)=> row.username,
             sortable:true,
             wrap:true,
         
@@ -86,7 +86,7 @@ const ProjectTrackIpoTable = () => {
 
     useEffect(() => {
         const result = projectTrackI.filter(singleOrder => {
-            return singleOrder.body.toLowerCase().match(searchPTTI.toLocaleLowerCase());
+            return singleOrder.username.toLowerCase().match(searchPTTI.toLocaleLowerCase());
         });
 
         setFilteredProjectTrackI(result)

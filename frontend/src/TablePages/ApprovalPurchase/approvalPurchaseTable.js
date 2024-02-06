@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 import apiUrlGet from '../config'
 // import '../addVendor/viewVendor.css'
 
-
+     
 
 const ApprovalPurchaseTable= () => {
   const[approvalPurchase, setApprovalPurchase]= useState([]);
@@ -15,7 +15,7 @@ const ApprovalPurchaseTable= () => {
 
   const viewApprovalPurchase = async ()=>{
     try{
- const response = await axios.get(`${apiUrlGet}/purchase.php`)
+ const response = await axios.get(`${apiUrlGet}/purchase.php?id=get`)
      setApprovalPurchase(response.data);
      setFilteredApprovalPurchase(response.data)
     } catch(error){

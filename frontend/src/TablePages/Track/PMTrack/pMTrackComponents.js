@@ -2,6 +2,8 @@ import React from "react";
 
 import PMTrackTable from "./pMTrackTable";
 import BackTheme from "../../BackTheme";
+import EmpDetailsComponents from "../../../ExtraPages/EmpDetailsComponent";
+import BackThemeFooter from "../../BackThemeFooter";
 
 
 
@@ -17,14 +19,12 @@ const PMTrackTablesComponents =()=>{
      
     
     <BackTheme/>
+    <EmpDetailsComponents/>
     
     <div style={{marginTop:'100px',marginRight:'15px',marginBottom:'50px'}}>
            <PMTrackTable/>
         </div>
-        <div>
-     
-   
-        </div>
+        <BackThemeFooter/>
  
   
      

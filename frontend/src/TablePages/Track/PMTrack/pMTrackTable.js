@@ -15,7 +15,7 @@ const PMTrackTable = () => {
 
     const PMTrack = async () => {
         try {
-            const response = await axios.get(`${newApiUrl}/pm_schedule.php`)
+            const response = await axios.get(`${newApiUrl}/pm_schedule.php?id=get`)
             setPMTrack(response.data);
             setFilteredPMTrack(response.data)
         } catch (error) {

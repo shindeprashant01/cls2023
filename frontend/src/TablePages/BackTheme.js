@@ -1,16 +1,22 @@
 import React from 'react'
 
 const BackTheme = () => {
-  return (
+
+  // const user =JSON.parse(localStorage.getItem('emp_id;'))
+  // function logout(){
+  //   localstorage.clear
+  // }
+
+  return (  
     <div>
-    <div>
+    <div style={{marginBottom:"70px"}}>
       <div className="w3-top">
         <div className="w3-bar w3-theme-d2 w3-left-align w3-large nav-bar">
           <a className="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-theme-d2">
             <i className="fa fa-bars"></i>
           </a>
           <a
-            href="#1"
+            href="/home"
             className="w3-bar-item w3-button w3-padding-large w3-theme-d4 nirvaa-cls-tag "
           >
             <i className="fa fa-home w3-margin-right"></i> Nirvaa CLS
@@ -28,10 +34,10 @@ const BackTheme = () => {
           <div className="w3-dropdown-hover">
             <button className="w3-button">Request</button>
             <div className="w3-dropdown-content w3-bar-block w3-border">
-              <a href="/expense_request" className="w3-bar-item w3-button">
+              <a href="/AMC_expense" className="w3-bar-item w3-button">
                 Expense Request
               </a>
-              <a href="/Purchase_request" className="w3-bar-item w3-button">
+              <a href="/AMC_purchase" className="w3-bar-item w3-button">
                 Purchase Request
               </a>
             </div>
@@ -82,14 +88,15 @@ const BackTheme = () => {
       <button className="w3-button">Report</button>
       <div className="w3-dropdown-content w3-bar-block w3-border">
         <a href="/report_admin" className="w3-bar-item w3-button">
-         Report
+         Report che
+         </a>
          <a href="/expenses_report_list" className="w3-bar-item w3-button">
          Expense Report
         </a>
         <a href="/purchase_report_list" className="w3-bar-item w3-button">
          Purchase Report
         </a>
-        </a>
+      
       </div>
     </div>
     <div className="w3-dropdown-hover">
@@ -262,11 +269,14 @@ Stock
   <div className="w3-dropdown-hover">
     <button className="w3-button">FMS</button>
     <div className="w3-dropdown-content w3-bar-block w3-border">
-      <a href="Fms/employee_fms" className="w3-bar-item w3-button">
+      <a href="/Fms/employee_fms" className="w3-bar-item w3-button">
       FMS
       </a>
-      <a href="Fms/hr_employee" className="w3-bar-item w3-button">
+      <a href="/Fms/hr_employee" className="w3-bar-item w3-button">
       FMS Employee
+      </a>
+      <a href="/new_cls/view_employee" className="w3-bar-item w3-button">
+      View Employee
       </a>
  
     </div>
@@ -318,12 +328,14 @@ Stock
       </a>
     </div>
   </div>
-          <a
+          <a 
             href="#"
             className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white"
             title="My Account"
+          
           >
             Logout
+           
           </a>
         </div>
       </div>

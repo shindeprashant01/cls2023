@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import '../../App.css'
 import DataTable from 'react-data-table-component';
 import axios from "axios";
+import newApiUrl from "../config";
 
 // import '../addVendor/viewVendor.css'
 
@@ -14,7 +15,7 @@ const RCAPoTables = () => {
 
     const viewRCAPoTable = async () => {
         try {
-            const response = await axios.get('https://jsonplaceholder.typicode.com/comments')
+            const response = await axios.get(`${newApiUrl}/po.php?id=get`)
             setRCAPo(response.data);
             setFilteredRCAPo(response.data)
         } catch (error) {
@@ -33,7 +34,7 @@ const RCAPoTables = () => {
         },
         {
             name: <div id="demo">PO ID</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.cc_id,
             sortable: true,
             wrap:true,
         },
@@ -48,7 +49,7 @@ const RCAPoTables = () => {
 
         {
             name: <div id="demo">Prime Customer</div>,
-            selector: (row) => row.body,
+            selector: (row) => row.prime_cust,
             sortable: true,
             wrap:true,
         },
@@ -57,14 +58,14 @@ const RCAPoTables = () => {
     
         {
             name: <div id="demo">Total PO</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.total_po_cost,
             sortable: true,
             wrap:true,
         },
      
         {
             name: <div id="demo">Start Date</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.start_date,
             sortable: true,
             wrap:true,
         },
@@ -72,19 +73,19 @@ const RCAPoTables = () => {
       
         {
             name: <div id="demo">Service ID</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.s_id,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Service Name</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.s_name,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Manager</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.manager,
             sortable: true,
             wrap:true,
         },
@@ -100,7 +101,7 @@ const RCAPoTables = () => {
 
     useEffect(() => {
         const result = rCAPo.filter(singleOrder => {
-            return singleOrder.body.toLowerCase().match(searchRCAPo.toLocaleLowerCase());
+            return singleOrder.cc_id.toLowerCase().match(searchRCAPo.toLocaleLowerCase());
         });
 
         setFilteredRCAPo(result)

@@ -4,10 +4,11 @@ import DataTable  from 'react-data-table-component';
 import axios from "axios";
 import { Button } from "react-bootstrap";
 import newApiUrl from "../../config";
-import '../../addVendor/viewVendor.css'
+import '../../addVendor/viewVendor.css';
+import { Link} from 'react-router-dom';
 
     
-
+  
 const LiveStockTable= () => {
   const[liveStock, setLiveStock]= useState([]);
   const[searchLS, setSearchLS]= useState("");
@@ -15,7 +16,7 @@ const LiveStockTable= () => {
 
   const viewLiveStock = async ()=>{
     try{
- const response = await axios.get(`${newApiUrl}/stock.php`)
+ const response = await axios.get(`${newApiUrl}/stock.php?Id=get`)
      setLiveStock(response.data);
      setFilteredLiveStock(response.data)
     } catch(error){
@@ -28,10 +29,14 @@ const LiveStockTable= () => {
   const columnsLiveStock=[
     {
       name:<div id="demo">Update</div>,
-      cell :(row)=><div>
-
-    <button  size="sm" className="btn btn-trasnparent" style={{color:'blue'}} onClick={()=> alert(row.id)} >Update </button>
-    </div> 
+      cell :(row)=>(
+        
+        <Link to={{ 
+          pathname: "/update_stock",
+          search: `?id=${row.id}`, 
+           }}><Button> Update</Button></Link>
+    
+      ) 
      
     },
     {
