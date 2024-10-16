@@ -6,18 +6,18 @@ import axios from "axios";
 import newApiUrl from '../config';
 import Form from "react-bootstrap/Form";
 import { useNavigate,useParams,Link} from  'react-router-dom';
-import './viewEmployeeUpdate.css'
+import './viewEmployeeUpdate.css'   
 import BackTheme from '../BackTheme';
 import EmpDetailsComponents from '../../ExtraPages/EmpDetailsComponent';
 
-
+    
 function ViewEmployeeUpdateForm(props) {
 
   const queryParameters = new URLSearchParams(window.location.search)
-  const emp_id = queryParameters.get('emp_id')
+  const emp_ID = queryParameters.get('emp_id');
 
 
-  
+     
 
  const navigate = useNavigate();
 
@@ -35,7 +35,7 @@ function ViewEmployeeUpdateForm(props) {
     
 
 
-const [employee, setEmployee] = useState([]);
+const [employee, setEmployee] = useState("");
 // const [newEmployee, setNewEmployee] = useState('');
 const[emp_id1,setEmp_id1] = useState([]);
 const [emp_name1,setEmp_name1] = useState([]);
@@ -44,7 +44,18 @@ const[emp_position1,setEmp_position1] = useState([]);
 const[emp_region1,setEmp_region1] = useState([]);
 const[emp_contact1,setEmp_contact1] = useState([]);
 const[emp_email1,setEmp_email1] = useState([]);
-const[emp_pass1,setEmp_pass1] = useState([]);
+const[emp_pass1,setEmp_pass1] = useState([]); 
+const[emp_repeatPass1,setEmp_repeatPass1] = useState([]); 
+
+const[present_add1,setPresent_add1] = useState([]);
+const[permanent_add1,setPermanent_add1] = useState([]);
+const[dob1,setDob1] = useState([]);
+const[childrens1,setChildrens1] = useState([]);
+const[maratial_status1,setMaratial_status1] = useState([]);
+const[wedding_date1,setWedding_date1] = useState([]);
+const[pan_no1,setPan_no1] = useState([]);
+const[adhar_no1,setAdhar_no1] = useState([]);
+const[bank_acc1,setBank_acc1] = useState([]);
 
 
 
@@ -57,11 +68,11 @@ const[emp_pass1,setEmp_pass1] = useState([]);
 
   const getUser = async () => {
     try {
-      const response = await axios.get(`${newApiUrl}/employee.php?id=edit&emp_id=${emp_id}`)
+      const response = await axios.get(`${newApiUrl}/employee.php?id=edit&emp_id=${emp_ID}`)
       // setExpenseTrack(response.data);
-       setEmployee(response.data)
-      console.log(response.data);
-      console.log(`${newApiUrl}/employee.php?id=edit&emp_id=${emp_id}`);
+       setEmployee(response.data[0])
+      console.log(response.data[0].emp_id);
+      console.log(`${newApiUrl}/employee.php?id=edit&emp_id=${emp_ID}`);
       setEmp_id1(response.data[0].emp_id);
       setEmp_name1(response.data[0].emp_name);
      setEmp_dept1(response.data[0].emp_dept);
@@ -69,7 +80,17 @@ const[emp_pass1,setEmp_pass1] = useState([]);
      setEmp_region1(response.data[0].emp_region);
      setEmp_contact1(response.data[0].emp_contact);
      setEmp_email1(response.data[0].emp_email);
-     setEmp_pass1(response.data[0].cust_pass);
+     setEmp_pass1(response.data[0].emp_pass);
+     setEmp_repeatPass1(response.data[0].emp_repeatPass);
+
+     setPresent_add1(response.data[0].present_add);
+     setPermanent_add1(response.data[0].permanent_add);
+     setDob1(response.data[0].dob);
+     setMaratial_status1(response.data[0].maratial_status);
+     setWedding_date1(response.data[0].wedding_date);
+     setPan_no1(response.data[0].pan_no);
+     setAdhar_no1(response.data[0].adhar_no);
+     setBank_acc1(response.data[0].bank_acc);
     
       // var Vendor = response.data[0];
       // console.log('vendorNew-',Vendor['vendor_id']);
@@ -87,14 +108,64 @@ const[emp_pass1,setEmp_pass1] = useState([]);
   //  setCompany_address1(values => ({...values,[name]: value}));
   }
 
-const handleUpdate = (event) => {
-        event.preventDefault();
-   axios.put(`${newApiUrl}/employee.php?id=update&emp_id=${emp_id}`).then(function(response){
-    console.log(response.data);
-    // navigate('/');
-   });
-};
+// const handleUpdate1 = (event) => {
+//         event.preventDefault();
+//    axios.put(`${newApiUrl}/employee.php?id=update&emp_id=${emp_id}`).then(function(response){
+//     console.log(response.data);
+//     // navigate('/');
+//    });
+// };
 
+const handleUpdate = (event) => {
+  event.preventDefault();
+
+  try{
+    employee.emp_name =emp_name1;
+    employee.emp_dept = emp_dept1;
+    employee.emp_position = emp_position1;
+    employee.emp_region = emp_region1;
+    employee.emp_contact = emp_contact1;
+    employee.emp_email= emp_email1;
+    employee.emp_pass =emp_pass1;
+
+    employee.emp_repeatPass =emp_repeatPass1;
+    employee.present_add =present_add1;
+    employee.permanent_add =permanent_add1;
+    employee.dob =dob1;
+    employee.maratial_status =maratial_status1;
+    employee.wedding_date =wedding_date1;
+    employee.pan_no =pan_no1;
+    employee.adhar_no =adhar_no1;
+    employee.bank_acc =bank_acc1;
+    
+
+    console.log(employee);
+    
+    var jsonStr = '{"employeeUpdate":[],"man_power":[]}'
+    var obj = JSON.parse(jsonStr);
+   
+
+    obj["employeeUpdate"].push(employee);
+    
+    jsonStr = JSON.stringify(obj);
+    
+        console.log(jsonStr);
+        const response = axios.put(`${newApiUrl}/employee.php?id=update&emp_id=${emp_ID}`,jsonStr);
+        // const response = axios.put('https://jsonplaceholder.typicode.com/posts/1',jsonStr);
+        setEmployee(response.data);
+        // console.log(employee);
+        console.log(response);
+      //  setVendors(response.data);
+      
+      alert("updated Successfully");
+    navigate('/home');
+  //  })
+  }
+   catch(error){
+    console.log(error);
+   }
+
+};
 
 //  console.log('vendor-',vendor_id3);
   return (
@@ -121,34 +192,34 @@ const handleUpdate = (event) => {
                <div  className='sub-nav-bar-update-employee'>
         <div className="w3-dropdown-hover">
             
-            <Link to= {`/employee_details?emp=${emp_id}`} className="w3-bar-item w3-button">
+            <Link to= {`/employee_details?emp=${emp_ID}`} className="w3-bar-item w3-button">
                 Personal Details
               </Link>
            
           </div>
           <div className="w3-dropdown-hover">
         
-            <Link to= {`/family_details?emp=${emp_id}`} className="w3-bar-item w3-button">
+            <Link to= {`/family_details?emp=${emp_ID}`} className="w3-bar-item w3-button">
                 Family Details
               </Link>
           
           </div>
           <div className="w3-dropdown-hover" >
        
-             <Link to= {`/educational_details?emp=${emp_id}`} className="w3-bar-item w3-button">
+             <Link to= {`/educational_details?emp=${emp_ID}`} className="w3-bar-item w3-button">
                 Educational Details
               </Link> 
             
           </div>
 
           <div className="w3-dropdown-hover">
-          <Link to= {`/work_experience?emp=${emp_id}`} className="w3-bar-item w3-button">
+          <Link to= {`/work_experience?emp=${emp_ID}`} className="w3-bar-item w3-button">
                 Work Experience
               </Link> 
           </div>
 
           <div className="w3-dropdown-hover">
-          <Link to= {`/achievement_details?emp=${emp_id}`} className="w3-bar-item w3-button">
+          <Link to= {`/achievement_details?emp=${emp_ID}`} className="w3-bar-item w3-button">
                Achievement & Hobbies
               </Link> 
           </div>
@@ -162,10 +233,10 @@ const handleUpdate = (event) => {
        name='emp_id'
        id='emp_id'
        className="form-control input-box"
-       placeholder={emp_id1}
+      //  placeholder={emp_id1}
        aria-label="Large"
        aria-describedby="inputGroup-sizing-sm"
-      //  value={emp_id1}
+       value={emp_id1}
       
     /> 
   </div>
@@ -182,7 +253,7 @@ const handleUpdate = (event) => {
       placeholder={emp_name1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={(e)=>setEmp_name1(e.target.value)}
     
     /> 
   </div>
@@ -197,10 +268,10 @@ const handleUpdate = (event) => {
        id='present_address'
       //  value={company_address1}
       className="form-control input-box"
-      // placeholder={company_add1}
+      placeholder={present_add1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setPresent_add1(e.target.value)}
     />
   </div>
 </div>
@@ -214,10 +285,10 @@ const handleUpdate = (event) => {
        id='permanent_address'
       //  value={company_address1}
       className="form-control input-box"
-      // placeholder={company_add1}
+      placeholder={permanent_add1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setPresent_add1(e.target.value)}
     />
   </div>
 </div>
@@ -232,16 +303,17 @@ name="department"
 id="department"
 placeholder={emp_dept1}
 //   value={selectedValue}
-//   onChange={handleSelectChange }
+onChange={(e)=>setEmp_dept1(e.target.value)}
+    
 >
   <option>Others</option>
-  <option value="account">Account</option>
-  <option value="electrical">Electrical</option>
-  <option value="hvac">HVAC</option>
-  <option value="ibms">IBMS</option>
-  <option value="it">IT</option>
-  <option value="opearation">Operation</option>
-  <option value="purchase">Purchase</option>
+  <option value="Account">Account</option>
+  <option value="Electrical">Electrical</option>
+  <option value="HVAC">HVAC</option>
+  <option value="IBMS">IBMS</option>
+  <option value="IT">IT</option>
+  <option value="Operation">Operation</option>
+  <option value="Purchase">Purchase</option>
 </Form.Select>
 </div>
 </div>
@@ -259,19 +331,20 @@ id="emp_position"
 //   value={selectedValue}
 //   onChange={handleSelectChange }
 placeholder={emp_position1}
+onChange={e=>setEmp_position1(e.target.value)}
 >
   <option>Others</option>
-  <option value="account">Super Administrator</option>
-  <option value="electrical">Operation Administrator</option>
-  <option value="hvac">Program Manager</option>
-  <option value="ibms">Admin Associate</option>
-  <option value="it">Functional Manager</option>
-  <option value="opearation">Service Engineer</option>
-  <option value="purchase">Executive</option>
-  <option value="purchase">Amount Payable</option>
-  <option value="purchase">Tendor</option>
-  <option value="purchase">HR</option>
-  <option value="purchase">Sales</option>
+  <option value="Super Administartor">Super Administrator</option>
+  <option value="Operation Administrator">Operation Administrator</option>
+  <option value="Program Manager">Program Manager</option>
+  <option value="Admin Associate">Admin Associate</option>
+  <option value="Functional Manager">Functional Manager</option>
+  <option value="Service Engineer">Service Engineer</option>
+  <option value="Executive">Executive</option>
+  <option value="Amount Payable">Amount Payable</option>
+  <option value="Tendor">Tendor</option>
+  <option value="HR">HR</option>
+  <option value="Sales">Sales</option>
   
 </Form.Select>
 </div>
@@ -286,12 +359,13 @@ id="emp_region"
 //   value={selectedValue}
 //   onChange={handleSelectChange }
 placeholder={emp_region1}
+onChange={e=>setEmp_region1(e.target.value)}
 >
   <option>All India</option>
-  <option value="west">West</option>
-  <option value="east">East</option>
-  <option value="north">North</option>
-  <option value="south">South</option>
+  <option value="West">West</option>
+  <option value="East">East</option>
+  <option value="North">North</option>
+  <option value="South">South</option>
  
   
 </Form.Select>
@@ -310,7 +384,7 @@ placeholder={emp_region1}
       placeholder={emp_contact1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setEmp_contact1(e.target.value)}
     />
   </div>
 </div>
@@ -328,7 +402,7 @@ placeholder={emp_region1}
       placeholder={emp_email1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setEmp_email1(e.target.value)}
 
     />
   </div>
@@ -346,10 +420,10 @@ placeholder={emp_region1}
        id='dob'
       //  value={vendor.vendor_contactno2}
       className="form-control input-box"
-      // placeholder={cust_pass1}
+      placeholder={dob1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setDob1(e.target.value)}
     />
   </div>
 </div>
@@ -361,12 +435,12 @@ placeholder={emp_region1}
 <Form.Select aria-label="Default select example input-div-pforms-label"
 name="maritialSts"
 id="maritialSts"
-//   value={selectedValue}
-//   onChange={handleSelectChange }
+  value={maratial_status1}
+onChange={e=>setMaratial_status1(e.target.value)}
 >
   <option>--Select--</option>
-  <option value="married">Married</option>
-  <option value="unmarried">Unmarried</option>   
+  <option value="Married">Married</option>
+  <option value="Unmarried">Unmarried</option>   
 </Form.Select>
 </div>
 </div>
@@ -381,10 +455,10 @@ id="maritialSts"
        id='weddingDate'
       //  value={vendor.vendor_contactno2}
       className="form-control input-box"
-      // placeholder={cust_pass1}
+      placeholder={wedding_date1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setWedding_date1(e.target.value)}
     />
   </div>
 </div>
@@ -399,10 +473,10 @@ id="maritialSts"
        id='noOfChildren'
       //  value={vendor.vendor_email}
       className="form-control input-box"
-      // placeholder={cust_email1}
+      placeholder={childrens1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setChildrens1(e.target.value)}
 
     />
   </div>
@@ -419,10 +493,10 @@ id="maritialSts"
        id='panNo'
       //  value={vendor.vendor_email}
       className="form-control input-box"
-      // placeholder={cust_email1}
+      placeholder={pan_no1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setPan_no1(e.target.value)}
 
     />
     <input type="file" className="input-box-unique-1" />
@@ -438,10 +512,10 @@ id="maritialSts"
        id='adharNo'
       //  value={vendor.vendor_email}
       className="form-control input-box"
-      // placeholder={cust_email1}
+      placeholder={adhar_no1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setAdhar_no1(e.target.value)}
 
     />
     <input type="file" className="input-box-unique-1" />
@@ -457,11 +531,10 @@ id="maritialSts"
        id='accNo'
       //  value={vendor.vendor_email}
       className="form-control input-box"
-      // placeholder={emp_email1}
+      placeholder={bank_acc1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
-
+      onChange={e=>setBank_acc1(e.target.value)}
     />
 
   </div>
@@ -479,7 +552,7 @@ id="maritialSts"
       placeholder={emp_pass1}
       aria-label="Large"
       aria-describedby="inputGroup-sizing-sm"
-      onChange={handleChange}
+      onChange={e=>setEmp_pass1(e.target.value)}
 
     />
 
@@ -488,8 +561,8 @@ id="maritialSts"
 
                    
 <div className="btn-submit-vendor-regi">
-<a href='/edit_employee'> <Button variant="primary" size='lg'  onClick={handleUpdate}>Update</Button>
-</a>
+ <Button variant="primary" size='lg'  onClick={handleUpdate}>Update</Button>
+
 
 
  

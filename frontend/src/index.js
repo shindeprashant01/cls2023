@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import './assets/css/global.css'
 // cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Abc, { App1 } from './App1';
 
 
 
@@ -17,6 +18,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
+  
+  {/* <Abc/> */}
+  
   </React.StrictMode>
 );
 

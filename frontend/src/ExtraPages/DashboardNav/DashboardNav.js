@@ -1,6 +1,8 @@
 import React from 'react'
 
 const DashboardNav = () => {
+
+  
   return (
     
    
@@ -17,14 +19,36 @@ const DashboardNav = () => {
             <i className="fa fa-home w3-margin-right"></i> Nirvaa CLS
           </a>
          
-         
+
+          <div className="w3-dropdown-hover">
+            {/* <button className="w3-button">Home</button> */}
+            {/* <div className="w3-dropdown-content w3-bar-block w3-border"> */}
+              <a href="/Purchase_form" className="w3-bar-item w3-button">
+                Home
+              </a>
+              
+            {/* </div> */}
+          </div>
+
+          
+          <div className="w3-dropdown-hover">
+              <a href="/Purchase_form" className="w3-bar-item w3-button">
+                About
+              </a>
+          </div>
+
+          <div className="w3-dropdown-hover">
+              <a href="/Purchase_form" className="w3-bar-item w3-button">
+                Contact
+              </a>
+          </div>
     
           <a
             href="#"
             className="w3-bar-item w3-button w3-hide-small w3-right w3-padding-large w3-hover-white"
             title="My Account"
           >
-            Logout
+            SignUp
           </a>
         </div>
       {/* </div> */}

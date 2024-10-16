@@ -100,25 +100,25 @@ const ArchivedPoTable = () => {
         },
         {
             name: <div id="demo">Service_ID</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.s_id,
             sortable: true,
             wrap:true
         },
         {
             name: <div id="demo">Service Name</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.s_name,
             sortable: true,
             wrap:true
         },
         {
             name: <div id="demo">Manager</div>,
-            selector: (row) => row.project_manager,
+            selector: (row) => row.manager,
             sortable: true,
             wrap:true
         },
         {
             name: <div id="demo">AMC</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.amc,
             sortable: true,
             wrap:true
         },

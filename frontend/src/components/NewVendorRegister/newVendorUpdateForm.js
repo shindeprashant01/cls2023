@@ -11,7 +11,7 @@ import EmpDetailsComponents from '../../ExtraPages/EmpDetailsComponent';
 
 
 
-
+ 
 
 
 function NewVendorUpdateForm(props)  {
@@ -36,9 +36,24 @@ function NewVendorUpdateForm(props)  {
 //     .catch(err => console.log(err))
 //  },[])
     
+const allInputs = { imgUrl: '' };
+const [imageAsFile, setImageAsFile] = useState('');
+    const [imageAsUrl, setImageAsUrl] = useState(allInputs);
+    const [media, setMedia] = useState(null);
 
 
-const [vendor, setVendor] = useState([]);
+    const handleImageAsFile = (e) => {
+      //image var holds the file object which has a type property 
+       const image = e.target.files[0];          
+       console.log(image.type); // this will output the mime, i.e "image/png" or "image/jpg"
+       setImageAsFile(imageFile => (image));
+      console.log(imageAsFile);
+ 
+   }
+
+const [vendor, setVendor] = useState("");
+
+
 // const [newEmployee, setNewEmployee] = useState('');
 const[vendor_id1,setVendor_id1] = useState([]);
 const[Company_name1,setCompany_name1] = useState([]);
@@ -57,9 +72,23 @@ const[incorporation_file1,setIncorporation_file1] = useState([]);
 const[cancelledChequeNo1,setCancelledChequeNo1] = useState([]);
 const[moa1,setMoa1] = useState([]);
 const[aoa1,setAoa1] = useState([]);
-const[companyProfile1,setCompanyProfile1] = useState([]);
+const[profileFile1,setProfileFile1] = useState([]);
 const[memeFile1,setMemeFile1] = useState([]);
-const [placeholderValue, setPlaceholderValue] = useState('');
+// const [placeholderValue, setPlaceholderValue] = useState('');
+
+const[files, setFiles]= useState(null);
+const[progress, setProgress]= useState({started: false,pc: 0});
+const[msg, setMsg]= useState(null);
+
+// const handleImageAsFiles = (e) => {
+//   //image var holds the file object which has a type property 
+//    const image = e.target.files[0];  
+//    setFiles(image) ;       
+//    console.log(files); // this will output the mime, i.e "image/png" or "image/jpg"
+  
+//   // console.log(imageAsFile);
+
+// }
 
 
   useEffect(() => {
@@ -71,8 +100,9 @@ const [placeholderValue, setPlaceholderValue] = useState('');
     try {
       const response = await axios.get(`${newApiUrl}/vendor_details.php?id=edit&vendor_id=${vendor_id}`)
       // setExpenseTrack(response.data);
-       setVendor(response.data)
-      console.log(response.data[0].vendor_id)
+       setVendor(response.data[0]);
+      console.log(response.data[0].vendor_id);
+
       setVendor_id1(response.data[0].vendor_id);
       setCompany_name1(response.data[0].Company_name);
      setCompany_address1(response.data[0].company_address);
@@ -90,7 +120,7 @@ const [placeholderValue, setPlaceholderValue] = useState('');
      setCancelledChequeNo1(response.data[0].cancelledChequeNo);
      setMoa1(response.data[0].moa);
      setAoa1(response.data[0].aoa);
-     setCompanyProfile1(response.data[0].companyProfile);
+     setProfileFile1(response.data[0].profileFile);
      setMemeFile1(response.data[0].memeFile);
       // var Vendor = response.data[0];
       // console.log('vendorNew-',Vendor['vendor_id']);
@@ -101,7 +131,7 @@ const [placeholderValue, setPlaceholderValue] = useState('');
   };
  const handleChange =(event)=>{
 
-  setPlaceholderValue(event.target.placeholder);
+  // setPlaceholderValue(event.target.placeholder);
   // const name = event.target.name;
   // const value = event.target.value;
   // setVendor(values=>({...values,[name]:value}));
@@ -123,21 +153,47 @@ const handleUpdate = (event) => {
   
       // console.log(response.data);
       // console.log(vendors);
+
+      vendor.Company_name = Company_name1;
+      vendor.company_address = company_address1;
+      vendor.vendor_name = vendor_name1;
+      vendor.vendor_contactno = vendor_contactno1;
+      vendor.vendor_contactno2 = vendor_contactno21;
+      vendor.vendor_email = vendor_email1;
+      vendor.vendor_email2= vendor_email21;
+      vendor.Bank = Bank1;
+      vendor.Acc_no = Acc_no1;
+      vendor.ifsc_code = ifsc_code1;
+      vendor.vendor_PAN = vendor_PAN1;
+      vendor.gst_file = gst_file1;
+      vendor.incorporation_file = incorporation_file1;
+      vendor.cancelledChequeNo = cancelledChequeNo1;
+      vendor.moa = moa1;
+      vendor.aoa = aoa1;
+      vendor.profileFile = profileFile1;
+      vendor.memeFile = memeFile1;
+    
+
+      console.log(vendor);
+
       var jsonStr = '{"updateVendor":[],"man_power":[]}'
       var obj = JSON.parse(jsonStr);
      
   
-      // obj['updateVendor'].push(vendors);
+      obj["updateVendor"].push(vendor);
       
       jsonStr = JSON.stringify(obj);
+
           console.log(jsonStr);
-          const response = axios.put(`${newApiUrl}/vendor_details.php?id=update`,jsonStr);
+          const response= axios.put(
+            `${newApiUrl}/vendor_details.php?id=update&vendor_id=${vendor_id}`,jsonStr);
           
-  
+         setVendor(response.data)
+         console.log(response)
         //  setVendors(response.data);
-        alert('success')
-  
-      navigate('/');
+        
+        alert("updated Successfully");
+      navigate('/home');
     //  })
     }
      catch(error){
@@ -145,8 +201,22 @@ const handleUpdate = (event) => {
      }
 
 
+    //  alert('success');
 
 
+    //  setMsg("uploading...");
+
+//     var fd= new vendor;
+//      fd.append('file',files);
+//      axios.post(`${newApiUrl}/vendor_details.php?id=edit`, fd,{
+      
+//       onUploadProgress:(progressEvent)=>{ console.log(progressEvent.progress*100)},
+//       headers:{
+//         "Custom-Header" :"value",
+//       }
+//      })
+// .then(res=> console.log(res.data))
+// .catch(err=> console.log(err));
 
   //       event.preventDefault();
   //  axios.put(`${newApiUrl}/vendor_details.php?id=update&vendor_id=${vendor_id}`).then(function(response){
@@ -251,12 +321,13 @@ const handleUpdate = (event) => {
                     placeholder={Company_name1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setCompany_name1(e.target.value)}
+                    
                   
                   /> 
                 </div>
               </div>
-                <p>placeholder value :{placeholderValue}</p>
+              
               <div className="input-container-vendor-regi">
                 <label className="label-vendor-regi"> Vendor Address :</label>
                 <div className="input-details-vendor-regi">
@@ -269,7 +340,7 @@ const handleUpdate = (event) => {
                     placeholder={company_address1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setCompany_address1(e.target.value)}
                   />
                 </div>
               </div>
@@ -286,7 +357,7 @@ const handleUpdate = (event) => {
                     placeholder={vendor_name1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setVendor_name1(e.target.value)}
                   />
                 </div>
               </div>
@@ -303,7 +374,7 @@ const handleUpdate = (event) => {
                     placeholder={vendor_contactno1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setVendor_contactno1(e.target.value)}
 
                   />
                 </div>
@@ -320,7 +391,7 @@ const handleUpdate = (event) => {
                     placeholder={vendor_contactno21}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>seteVndor_contactno21(e.target.value)}
                   />
                 </div>
               </div>
@@ -337,7 +408,7 @@ const handleUpdate = (event) => {
                     placeholder={vendor_email1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setVendor_email1(e.target.value)}
 
                   />
                 </div>
@@ -354,7 +425,7 @@ const handleUpdate = (event) => {
                     placeholder={vendor_email21}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setVendor_email21(e.target.value)}
                   />
                 </div>
               </div>
@@ -370,7 +441,7 @@ const handleUpdate = (event) => {
                     placeholder={Bank1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setBank1(e.target.value)}
                   />
                 </div>
               </div>
@@ -386,7 +457,7 @@ const handleUpdate = (event) => {
                     placeholder={Acc_no1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setAcc_no1(e.target.value)}
                   />
                 </div>
               </div>
@@ -402,7 +473,7 @@ const handleUpdate = (event) => {
                     placeholder={ifsc_code1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setIfsc_code1(e.target.value)}
               
                   />
                 </div>
@@ -421,10 +492,15 @@ const handleUpdate = (event) => {
                      placeholder={vendor_PAN1}
                      aria-label="Large"
                      aria-describedby="inputGroup-sizing-sm"
-                     onChange={handleChange}
+                     onChange={(e)=>setVendor_PAN1(e.target.value)}
                   />
               
-                <input type="file" className="input-box-unique-1" />
+                <input type="file" className="input-box-unique-1"
+                name='pan_file'
+                id='pan_file'
+              
+                 onChange={e => { setFiles(e.target.files[0])}}
+                 />
                 </div>
                 </div>
               </div>
@@ -436,17 +512,22 @@ const handleUpdate = (event) => {
                 <div className='file-type'>
                 <input
                      type="text"
-                     name='gst_file'
-                     id='gst_file'
+                    //  name='gst_file'
+                    //  id='gst_file'
                     //  value={vendor.gst_file}
                      className="form-control input-box-unique"
                     placeholder={gst_file1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setGst_file1(e.target.value)}
                   />
               
-                <input type="file" className="input-box-unique-1" />
+                <input type="file" className="input-box-unique-1" 
+                   name='gst_file'
+                id='gst_file'
+                // value={gst_file1}
+                // onChange={handleImageAsFiles}
+                />
                 </div>
                 </div>
               </div>
@@ -464,7 +545,7 @@ const handleUpdate = (event) => {
                     placeholder={incorporation_file1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setIncorporation_file1(e.target.value)}
                   />
               
                 <input type="file" className="input-box-unique-1" />
@@ -485,7 +566,7 @@ const handleUpdate = (event) => {
                     placeholder={cancelledChequeNo1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setCancelledChequeNo1(e.target.value)}
                   />
               
                 <input type="file" className="input-box-unique-1" />
@@ -506,7 +587,7 @@ const handleUpdate = (event) => {
                     placeholder={moa1}
                      aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setMoa1(e.target.value)}
                   />
               
                 <input type="file" className="input-box-unique-1" />
@@ -527,7 +608,7 @@ const handleUpdate = (event) => {
                     placeholder={aoa1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setAoa1(e.target.value)}
                   />
               
                 <input type="file" className="input-box-unique-1" />
@@ -546,10 +627,10 @@ const handleUpdate = (event) => {
                     //  value={vendor.companyProfile}
 
                      className="form-control input-box-unique"
-                    placeholder={companyProfile1}
+                    placeholder={profileFile1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setProfileFile1(e.target.value)}
                   />
               
                 <input type="file" className="input-box-unique-1" />
@@ -569,7 +650,7 @@ const handleUpdate = (event) => {
                     placeholder={memeFile1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                    onChange={handleChange}
+                    onChange={(e)=>setMemeFile1(e.target.value)}
                   />
               
                 <input type="file" className="input-box-unique-1" />

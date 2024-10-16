@@ -34,20 +34,20 @@ const ArchivedTicketsTable = () => {
         },
 
         {
-            name: <div id="demo">  Ticket ID</div>,
+            name: <div id="demo"> Ticket ID</div>,
             selector: (row) => row.tikckit_id,
             sortable: true,
             wrap:true,
             
         },
         {
-            name: <div id="demo">Start Date</div>,
+            name: <div id="demo">Start Date [yyyy-mm-dd]</div>,
             selector: (row) => row.Date,
             sortable: true,
             wrap:true,
         },
         {
-            name: <div id="demo">Start Time</div>,
+            name: <div id="demo">Start Time[24 Hour]</div>,
             selector: (row) => row.Time,
         },
 
@@ -77,8 +77,12 @@ const ArchivedTicketsTable = () => {
         },
        
         {
-            name: <div id="demo">End Date</div>,
+            name: <div id="demo">End Date[yyyy-mm-dd]</div>,
             selector: (row) => row.End_Date,
+        },
+        {
+            name: <div id="demo">End Time[24 Hour]</div>,
+            selector: (row) => row.End_Time,
         },
 
         {

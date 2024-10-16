@@ -38,7 +38,7 @@ const ExpenseRequest = () => {
       obj["purchase"].push(purchases);
 
       jsonStr = JSON.stringify(obj);
-      console.log(jsonStr);
+      console.log(jsonStr);                
       const response = axios.post(`${newApiUrl}/purchase.php?id=post`, jsonStr);
 
     setPurchases(response.data);

@@ -54,6 +54,7 @@ function EditPmScheduleForm(props) {
  const navigate = useNavigate();
 
 //  const {id} = useParams();
+
 //  console.log("this is id :" , vendor_id)
 
 //   const [data, setData] = useState([]);
@@ -119,6 +120,9 @@ const[emp_pass1,setEmp_pass1] = useState([]);
   //  setCompany_address1(values => ({...values,[name]: value}));
   }
 
+
+
+
 const handleUpdate = (event) => {
         event.preventDefault();
    axios.put(`${newApiUrl}/employee.php?id=update&emp_id=${emp_id}`).then(function(response){
@@ -147,7 +151,6 @@ const handleUpdate = (event) => {
                     // placeholder={company_add1}
                     aria-label="Large"
                     aria-describedby="inputGroup-sizing-sm"
-                
                   />
                 </div>
               </div>

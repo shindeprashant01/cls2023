@@ -14,7 +14,7 @@ const EmployeeRegiComponents = () => {
            Note:- Do not use " " in this form
          </p>
        </div>
-       
+        
        <EmployeeRegister/>
 
    <div>

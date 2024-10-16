@@ -75,10 +75,10 @@ const CreateProject = () => {
                       className="select-create-project"
                     >
                       <option>Assign Project Manager</option>
-                      <option value="1">Jagdish Shinde</option>
-                      <option value="2">Vinod Kharik</option>
-                      <option value="3">Pranit Patil</option>
-                      <option value="4">Ganesh Gorde</option>
+                      <option value="Jagdish Shinde">Jagdish Shinde</option>
+                      <option value="Vinod Kharik">Vinod Kharik</option>
+                      <option value="Pranit Patil">Pranit Patil</option>
+                      <option value="Ganesh Gorde">Ganesh Gorde</option>
                     </Form.Select>
                   </div>
                 </div>
@@ -120,10 +120,10 @@ const CreateProject = () => {
                         className="select-create-project"
                       >
                         <option>Select Prime Customer</option>
-                        <option value="1">Purchase</option>
-                        <option value="2">Maintanance</option>
-                        <option value="3">Industry</option>
-                        <option value="4">Humon Resource</option>
+                        <option value="Purchase">Purchase</option>
+                        <option value="Maintanance">Maintanance</option>
+                        <option value="Industry">Industry</option>
+                        <option value="Human Resourse">Humon Resource</option>
                       </Form.Select>
                     </div>
                   </div>

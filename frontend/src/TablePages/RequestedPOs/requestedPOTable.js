@@ -104,24 +104,24 @@ const ReqeustedPoTables = () => {
         },
         {
             name: <div id="demo">Service ID</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.s_id,
             sortable: true,
         },
         {
             name: <div id="demo">Service Name</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.s_name,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">Manager</div>,
-            selector: (row) => row.email,
+            selector: (row) => row.manager,
             sortable: true,
             wrap:true,
         },
         {
             name: <div id="demo">AMC</div>,
-            selector: (row) => row.cc_value,
+            selector: (row) => row.amc,
             sortable: true,
         },
 

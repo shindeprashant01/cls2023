@@ -1,7 +1,7 @@
 import React from 'react';
 
 // import CreateProject from './createProject';
-import DemoSection from './demoSection';
+
 import CreateProject from './createProject';
 import BackTheme from '../../TablePages/BackTheme';
 import EmpDetailsComponents from '../../ExtraPages/EmpDetailsComponent';

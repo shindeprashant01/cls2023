@@ -49,10 +49,10 @@ const CustomerRegister = () => {
       jsonStr = JSON.stringify(obj);
       console.log(jsonStr);
       const response = axios.post(`${newApiUrl}/customer.php?id=post`, jsonStr);
-
+      // console.log(reaponse);
       setCustomers(response.data);
 
-      navigate("/");
+      navigate("/home");
       //  })
     } catch (error) {
       console.log(error);
@@ -72,7 +72,7 @@ const CustomerRegister = () => {
               className="form-control"
               aria-label="Large"
               aria-describedby="inputGroup-sizing-sm"
-            />
+            />  
           </div> */}
                 <div class="input-group">
                   <div className="input-group-1">

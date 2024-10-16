@@ -83,18 +83,7 @@ const ViewPoTable= () => {
       name:<div id="demo">PDF</div>,
       selector: (row) => row.email,
       wrap:true,
-    },
-    {
-        name:<div id="demo">PDF</div>,
-        selector: (row) => row.email,
-        wrap:true,
-      },
-      {
-        name:<div id="demo">PDF</div>,
-        selector: (row) => row.email,
-        wrap:true,
-      },
-   
+    }
    
  
   

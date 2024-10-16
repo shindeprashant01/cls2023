@@ -98,7 +98,7 @@ const LivePoTable = () => {
             sortable: true,
             wrap:true
         },
-        {   
+        {    
             name: <div id="demo">End Date</div>,
             selector: (row) => row.end_date,
             sortable: true,

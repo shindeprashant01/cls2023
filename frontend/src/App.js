@@ -1,4 +1,4 @@
-import React ,{useEffect}from 'react';
+import React ,{useState,useEffect}from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route,Routes} from 'react-router-dom';
 import PurchaseReqComponents from './components/PurchaseRequest/purchaseReqComponent';
@@ -103,6 +103,11 @@ import ExpenseRequest from './components/ExpenseRequest/expenseRequest';
 import PurchaseRequest from './components/PurchaseRequest/purchaseRequest';
 import EmpDetailsComponents from './ExtraPages/EmpDetailsComponent';
 import FrontPage from './ExtraPages/FrontPage/frontpage';
+import PoServiceNotAvialableAATableComponents from './TablePages/PoServiceNotAvailable/pSNAAAComponents';
+import Report1Components from './components/Reports/reportComponent';
+import AddStockFormComponents from './components/Stock/AddStock/addStockComponents';
+import StockRequestComponents from './components/Stock/StockRequest/stockRequestComponents';
+import ViewCustomer1 from './TablePages/ViewTables/viewCustomer1';
 
 
 
@@ -110,29 +115,23 @@ import FrontPage from './ExtraPages/FrontPage/frontpage';
 
 function App() {
 
-  // useEffect(()=>{ 
-  //    fetch('https://jsonplaceholder.typicode.com/posts/1')
-  //    .then(res=> res.json())
-  //    .then(data =>console.log(data))
-  //    .catch(err => console.log(err))
-  // },[])
   return (
 
     <Router >  
-      <div >
-        {/* <BackTheme/> */}
+    
     <Routes> 
-    <Route  path="/" Component={FrontPage}/>
+  
+    <Route path="/" Component={FrontPage} />
+    <Route  path="/signin" Component={SignForm}/>
+
     <Route  path="/empComponents" Component={EmpDetailsComponents}/>
     <Route  path="/home" Component={HomeComponents}/>
-    <Route  path="/login" Component={LoginForm}/>
-    <Route  path="/signin" Component={SignForm}/>
+    {/* <Route  path="/login" Component={LoginForm}/> */}
+
     <Route path='/dashboard' Component={Dashboard}/>
     <Route path='/dashboardPrashant' Component={MultipleDashboards}/>
     <Route  path="/purchase_form" Component={PurchaseFormComponents}/>  
     
-
-     
     {/* track -> purchase track */}
     <Route  path="/AMC_purchase" Component={PurchaseReqComponents}/>
     {/* ApprovalPurchase */}
@@ -145,7 +144,10 @@ function App() {
     <Route  path="/create_tickets" Component={CreateTicketComponents}/>
     {/* live Tickets */}
     <Route  path="/report_admin" Component={ReportAdminComponents}/>
+    <Route  path="/Report1" Component={Report1Components}/>
     <Route  path="/create_project" Component={CreateProjectComponents}/>
+    <Route  path="/add_stock" Component={AddStockFormComponents}/>
+    <Route  path="/stock_request" Component={StockRequestComponents}/>
     {/* <Route  path="/purchase_table" Component={PurchaseTablePage}/> */}
 
                             {/* Tables  */} 
@@ -157,7 +159,7 @@ function App() {
     <Route  path="/po_approval" Component={ProjectTableComponents}/>
     <Route  path="/Approval_project_purchase" Component={PurchaseTableComponents}/>
     <Route  path="/Approval_project_expense" Component={ExpenseTableComponents}/> 
-    <Route  path="/request_purchase" Component={PurchaseRequestTableComponents}/>
+    <Route  path="/request_purchase" Component={PurchaseRequestTableComponents}/>  
 
 
 
@@ -185,7 +187,7 @@ function App() {
     <Route path='/archive_po_DOA' Component={ArchivedPODOATableComponents}/> 
     <Route path='/archive_po_sa' Component={ArchivedPOSATableComponents}/>
     <Route path='/edit_archived_po' Component={ArchivePOSATableUpdateForm}/>
-
+   
     <Route path='/disapprove_po_list' Component={RequestedPOTableComponents}/>
     <Route path='/recent_live_po_AA' Component={RCAPoTablesComponents}/>
     <Route path='/recent_live_po_HOD' Component={RCAPoTablesComponents}/>
@@ -198,6 +200,7 @@ function App() {
     {/* <Route path='demo_vendor' Component={Demovendor}/> */}
     <Route path='/view_customer' Component={ViewCustomerTableComponents}/>
     <Route path='/edit_customer' Component={ViewCustomerUpdateForm}/>
+    {/* <Route path='/edit_customer' Component={ViewCustomer1}/> */}
 
     <Route path='/view_employee' Component={ViewEmployeeTableComponents}/> 
     <Route path='/edit_employee' Component={ViewEmployeeUpdateForm}/> 
@@ -214,6 +217,7 @@ function App() {
     <Route path='/archived_pm_aa' Component={ArchivePMTablesComponents}/>
     <Route path='/archived_fm_track' Component={ArchivePMTablesComponents}/>
     <Route path='/live_cc_po_service_not_Visible' Component={PoServiceNotAvialableTableComponents}/>
+    <Route path='/live_cc_po_service_not_Visible_aa' Component={PoServiceNotAvialableAATableComponents}/>
     <Route path='/live_cc_po_service_not_Visible_DOA' Component={PoServiceNotAvialableDOATableComponents}/>
     <Route path='/track_record' Component={ProjectTrackTablesComponents}/> 
     <Route path='/track_record_IPO' Component={ProjectTrackIpoTablesComponents}/> 
@@ -223,13 +227,15 @@ function App() {
     <Route path='/others_live_ticket' Component={NewLiveTicketsTableComponents}/> 
     <Route path='/invoice_months' Component={InvoiceScheduleTableComponents}/> 
     <Route path='/invoice_months_aa' Component={InvoiceScheduleAATableComponents}/> 
+    
 
     {/* HR */}
     <Route path='/Fms/employee_fms' Component={FMSEmployeeTableComponents}/>
     <Route path='/Fms/hr_employee' Component={FMSEmployeeHrTableComponents}/>
     <Route path='/new_cls/view_employee' Component={ViewEmployeeHrTableComponents}/>
    
-   
+
+
      {/* Account */}
     <Route path='/AMC_expense_pay' Component={ExpensePaymentTableComponents}/>
     <Route path='/Acc_amc_purchase_pay' Component={PurchasePaymentTableComponents}/>
@@ -244,16 +250,19 @@ function App() {
     <Route path='/update_invoice_list' Component={UpdateInvoiceTableComponents}/>
     <Route path='/live_cc_account' Component={CreateInvoiceTableComponents}/>
     <Route path='/live_ticket_se' Component={LiveTicketsSeTableComponents}/>
-    <Route path='/amc_expense_status_s' Component={ExpenseTrackSeTableComponents}/>
+  
 
    {/* Servie Engineer */}
-   
-   <Route path='amc_purchase_status_se' Component={PurchaseTrackSeTableComponents}/>
+   <Route path='/amc_expense_status_se' Component={ExpenseTrackSeTableComponents}/>
+   <Route path='/amc_purchase_status_se' Component={PurchaseTrackSeTableComponents}/>
     </Routes>
-    </div>
     </Router>
     
   );
 }
+
+
+
+
 
 export default App;

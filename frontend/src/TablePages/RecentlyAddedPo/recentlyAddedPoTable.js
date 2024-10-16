@@ -5,7 +5,7 @@ import axios from "axios";
 import newApiUrl from "../config";
 
 // import '../addVendor/viewVendor.css'
-
+    
 
 
 const RCAPoTables = () => {
@@ -20,7 +20,7 @@ const RCAPoTables = () => {
             setFilteredRCAPo(response.data)
         } catch (error) {
             console.log(error);
-        }
+        }    
     };
 
 

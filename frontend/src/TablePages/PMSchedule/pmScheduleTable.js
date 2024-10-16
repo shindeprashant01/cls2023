@@ -161,8 +161,7 @@ const PMScheduleTable= () => {
                   color: "white",
                   backgroundColor: "rgb(67, 190, 206)",
                   padding: "12px",
-                  // height:'100px'
-                  // minWidht "!100px !important"
+                 
   
               }
           },

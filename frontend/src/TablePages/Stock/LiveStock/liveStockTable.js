@@ -110,13 +110,13 @@ const LiveStockTable= () => {
     },
     {
       name:<div id="demo">Identification Location</div>,
-      selector: (row) => row.c_location,
+      selector: (row) => row.c_loction,
       sortable:true,
       wrap:true,
     },
     {
         name:<div id="demo">Allocate To Name</div>,
-        selector: (row) => row.email,
+        selector: (row) => row.c_owner,
         sortable:true,
          wrap:true,
     },

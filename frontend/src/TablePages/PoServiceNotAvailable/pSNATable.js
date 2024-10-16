@@ -32,22 +32,22 @@ const PSNATable= () => {
       wrap:true,
   
     },
-    {
-      name:<div id="demo">PO Del</div>,
-      selector: (row )=> row.email,
-      sortable:true,
-      wrap:true,
+    // {
+    //   name:<div id="demo">PO Del</div>,
+    //   selector: (row )=> row.email,
+    //   sortable:true,
+    //   wrap:true,
   
-    },
-    {
-      name:<div id="demo">PO Edit</div>,
-      selector: (row) => row.body,
-      sortable:true,
-      wrap:true,
+    // },
+    // {
+    //   name:<div id="demo">PO Edit</div>,
+    //   selector: (row) => row.body,
+    //   sortable:true,
+    //   wrap:true,
   
-    },
+    // },
     {
-        name:<div id="demo">PO id</div>,
+        name:<div id="demo">PO Id</div>,
         selector: (row) => row.body,
         sortable:true,
         wrap:true,

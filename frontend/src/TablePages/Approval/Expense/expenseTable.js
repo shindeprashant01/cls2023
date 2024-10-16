@@ -6,7 +6,7 @@ import { Button } from "react-bootstrap";
 import newApiUrl from "../../config";
 import '../../../App.css'
 
-
+  
 
 
 const ExpenseTable= () => {
@@ -93,7 +93,7 @@ const ExpenseTable= () => {
      
     },
     {
-      name:'Approve',
+      name:'Disapprove',
       cell :(row)=> <Button variant="outline-danger" size="sm" onClick={()=> alert(row.id)} > Delete</Button>
      
     },

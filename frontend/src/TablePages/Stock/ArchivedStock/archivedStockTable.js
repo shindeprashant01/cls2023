@@ -57,7 +57,7 @@ const ArchivedStockTable= () => {
       wrap:true,
     },
     {
-        name:<div id="demo">Description t</div>,
+        name:<div id="demo">Description </div>,
         selector: (row) => row.body,
         sortable:true,
         wrap:true,

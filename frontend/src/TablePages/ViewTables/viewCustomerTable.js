@@ -7,7 +7,7 @@ import newApiUrl from "../config";
 // import '../addVendor/viewVendor.css'
 import { Link} from 'react-router-dom';
 
-
+  
      
 const   ViewCustomerTable = () => {
     const [viewCustomer, setViewCustomer] = useState([]);
@@ -17,6 +17,7 @@ const   ViewCustomerTable = () => {
     const viewCustomers = async () => {
         try {
             const response = await axios.get(`${newApiUrl}/customer.php?id=get`)
+            console.log(response);
             setViewCustomer(response.data);
             setFilteredViewCustomer(response.data)
         } catch (error) {
@@ -66,7 +67,7 @@ const   ViewCustomerTable = () => {
             sortable: true,
             wrap:true,
         },
-
+  
         {
             name:<div id="demo">Edit</div>,
             cell :(row)=> (

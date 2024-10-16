@@ -10,7 +10,7 @@ const EmpDetailsComponents = () => {
   const [emp_id, setEmp_id] = useState(() => {
     // Retrieve the global variable from localStorage on component mount
     const storedValue = localStorage.getItem("emp_id");
-    return storedValue ? JSON.parse(storedValue) : "defaultValue";
+    return storedValue ? (storedValue) : "defaultValue";
   });
   // const queryParameters = new URLSearchParams(window.location.search);
   // const emp_idz = queryParameters.get(emp_id);

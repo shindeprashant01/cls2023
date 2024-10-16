@@ -95,6 +95,7 @@ const LiveTicketsTable = () => {
             selector: (row) => row.email,
             wrap:true,
         },
+        
 
         {
             name: <div id="demo">Status</div>,

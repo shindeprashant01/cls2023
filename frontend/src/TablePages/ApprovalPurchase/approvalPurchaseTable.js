@@ -42,7 +42,7 @@ const ApprovalPurchaseTable= () => {
     },
    
     {
-      name:<div id="demo">Requested By ID/Name</div>,
+      name:<div id="demo">Requested By (ID/Name)</div>,
       selector: (row) => row.service_Engineer,
       wrap:true,
     },

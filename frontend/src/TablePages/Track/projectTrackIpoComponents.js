@@ -16,7 +16,7 @@ const ProjectTrackIpoTablesComponents =()=>{
     return(
         <>
      
-   
+         
 <BackTheme/>
 <EmpDetailsComponents/>
   
